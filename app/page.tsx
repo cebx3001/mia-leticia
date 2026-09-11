@@ -61,10 +61,16 @@ export default function Home() {
     </section>
 
     <section className="house" id="casa">
-      <figure className="house-main"><img src="images/house-gallery.webp" alt="Galería colonial de Mia Leticia"/></figure>
-      <figure className="house-detail"><img src="images/reading-area.webp" alt="Espacio interior de la casa"/></figure>
-      <div className="house-copy scroll-copy"><p className="eyebrow">01 — {english?'THE HOUSE':'LA CASA'}</p><h2><span>{english?'Come in.':'Entra.'}</span><em>{english?'You are':'Ya estás'}</em><span>{english?'home.':'en casa.'}</span></h2><p>{english?'Wood, wrought iron and adobe. A colonial house holding Quito’s pulse and the warmth of those who live in it.':'Madera, hierro forjado y adobe. Una casa colonial que conserva el pulso de Quito y la calidez de quienes la habitan.'}</p></div>
-      <p className="vertical-note">MONTÚFAR N5-91 Y MEJÍA</p>
+      <div className="house-stage">
+        <figure className="house-main"><img src="images/house-gallery.webp" alt="Galería colonial de Mia Leticia"/></figure>
+        <div className="house-wash" aria-hidden="true" />
+        <div className="house-copy scroll-copy">
+          <p className="eyebrow">01 — {english?'THE HOUSE':'LA CASA'}</p>
+          <h2 className="house-kinetic"><span>{english?'Come in.':'Entra.'}</span><em>{english?'You are':'Ya estás'}</em><span>{english?'home.':'en casa.'}</span></h2>
+          <p className="house-description">{english?'Wood, wrought iron and adobe. A colonial house holding Quito’s pulse and the warmth of those who live in it.':'Madera, hierro forjado y adobe. Una casa colonial que conserva el pulso de Quito y la calidez de quienes la habitan.'}</p>
+          <p className="house-address">MONTÚFAR N5-91 Y MEJÍA · CENTRO HISTÓRICO</p>
+        </div>
+      </div>
     </section>
 
     <section className="rooms" id="habitaciones">
