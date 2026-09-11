@@ -1,0 +1,35 @@
+/* Chapter 01 — cinematic editorial scrollytelling. Intentionally isolated from the approved hero. */
+.house{position:relative!important;z-index:3!important;min-height:240vh!important;background:#181610!important;color:#eee9dc!important;overflow:visible!important}
+.house-stage{position:sticky;top:0;height:100vh;overflow:hidden;background:#181610}
+.house-main{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;margin:0!important;overflow:hidden!important}
+.house-main:after{display:none!important}
+.house-main img{width:100%!important;height:100%!important;object-fit:cover!important;transform:scale(calc(1.14 - var(--scene-progress)*.07)) translate3d(calc(var(--mx)*-8px),calc((.5 - var(--scene-progress))*2.5vh),0)!important;filter:saturate(.88) contrast(1.03) brightness(.82);transition:none!important;will-change:transform}
+.house-wash{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(10,9,7,.72) 0%,rgba(10,9,7,.25) 43%,rgba(10,9,7,.06) 72%,rgba(10,9,7,.28) 100%),linear-gradient(180deg,rgba(0,0,0,.12),transparent 45%,rgba(0,0,0,.58));pointer-events:none}
+.house-copy{position:absolute!important;z-index:3!important;inset:0!important;width:auto!important;padding:0 3.2vw!important;background:transparent!important;backdrop-filter:none!important;display:flex;flex-direction:column;justify-content:center;color:#f2ede3;pointer-events:none}
+.house-copy .eyebrow{position:absolute;top:14vh;left:3.2vw;color:#f0c77e;opacity:calc(.25 + var(--scene-progress)*1.5);transform:translateY(calc((1 - var(--scene-progress))*18px));letter-spacing:.32em}
+.house-kinetic{margin:0!important;width:min(88vw,1500px);font:400 clamp(74px,10.5vw,176px)/.72 Georgia,serif!important;letter-spacing:-.07em!important;text-shadow:0 5px 30px rgba(0,0,0,.28)}
+.house-kinetic span,.house-kinetic em{display:block!important;opacity:1!important;transition:none!important;will-change:transform,opacity,filter}
+.house-kinetic span:nth-child(1){transform:translate3d(calc((1 - var(--scene-progress))*-18vw),0,0)!important;opacity:calc(var(--scene-progress)*3)!important}
+.house-kinetic em{margin-left:13vw!important;color:#f0c77e!important;font-weight:400!important;transform:translate3d(calc((1 - var(--scene-progress))*22vw),0,0)!important;opacity:calc((var(--scene-progress) - .12)*4)!important}
+.house-kinetic span:nth-child(3){margin-left:28vw!important;transform:translate3d(calc((1 - var(--scene-progress))*-12vw),0,0)!important;opacity:calc((var(--scene-progress) - .25)*4)!important}
+.house-description{position:absolute;right:4vw;bottom:12vh;width:min(380px,28vw);margin:0!important;font:italic 15px/1.65 Georgia,serif!important;color:#f2ede3;opacity:calc((var(--scene-progress) - .45)*3)!important;transform:translateY(calc((1 - var(--scene-progress))*26px));text-shadow:0 2px 18px #0008}
+.house-address{position:absolute;left:3.2vw;bottom:4vh;margin:0!important;font:8px/1 Arial,sans-serif!important;letter-spacing:.26em;text-transform:uppercase;color:#d8d0c3;opacity:calc((var(--scene-progress) - .58)*3)!important}
+.house-detail,.house-third,.vertical-note{display:none!important}
+
+@media(max-width:760px){
+  .house{min-height:220vh!important}
+  .house-stage{height:100svh}
+  .house-copy{padding:0 16px!important}
+  .house-copy .eyebrow{left:16px;top:13vh}
+  .house-kinetic{font-size:18vw!important;line-height:.78!important;width:100%}
+  .house-kinetic em,.house-kinetic span:nth-child(3){margin-left:0!important}
+  .house-kinetic span:nth-child(1){transform:translate3d(calc((1 - var(--scene-progress))*-28vw),0,0)!important}
+  .house-kinetic em{transform:translate3d(calc((1 - var(--scene-progress))*28vw),0,0)!important}
+  .house-kinetic span:nth-child(3){transform:translate3d(calc((1 - var(--scene-progress))*-22vw),0,0)!important}
+  .house-description{left:16px;right:16px;bottom:12vh;width:auto;font-size:14px!important;max-width:88vw}
+  .house-address{left:16px;bottom:4vh;max-width:75vw;line-height:1.4!important}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .house-main img,.house-kinetic span,.house-kinetic em,.house-description,.house-address,.house-copy .eyebrow{transform:none!important;opacity:1!important}
+}
