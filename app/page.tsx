@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type SyntheticEvent } from 'react';
 
 const roomImages = [
   {
@@ -29,6 +29,15 @@ const roomImages = [
   },
 ];
 
+const hotelPhotos = {
+  arrival: 'https://www.instagram.com/p/DcZquDNsrAE/media/?size=l',
+  commons: 'https://www.instagram.com/p/DdDF5l8sPx6/media/?size=l',
+  family: 'https://www.instagram.com/p/DX2VKnwlEbE/media/?size=l',
+  games: 'https://www.instagram.com/p/Dayj_moMMJI/media/?size=l',
+  breakfast: 'https://www.instagram.com/p/DXZiMILkcAe/media/?size=l',
+  returnCouple: 'https://www.instagram.com/p/DaeQ66ZMGyJ/media/?size=l',
+} as const;
+
 const ecuador = [
   ['Cotopaxi', 'images/cotopaxi.webp'],
   ['Quilotoa', 'images/quilotoa.webp'],
@@ -38,6 +47,14 @@ const ecuador = [
 ] as const;
 
 const clamp = (value: number, min = 0, max = 1) => Math.max(min, Math.min(max, value));
+
+const fallbackPhoto = (event: SyntheticEvent<HTMLImageElement>, fallback: string) => {
+  const image = event.currentTarget;
+  if (image.dataset.fallbackApplied) return;
+  image.dataset.fallbackApplied = 'true';
+  image.parentElement?.classList.add('ml-photo-fallback');
+  image.src = fallback;
+};
 
 export default function Home() {
   const [english, setEnglish] = useState(false);
@@ -176,16 +193,23 @@ export default function Home() {
       </section>
 
       <section className="ml-threshold" id="entrar" data-scene="threshold">
-        <div className="ml-stage">
-          <img className="ml-threshold-facade" src="images/facade.webp" alt="Entrada de Mia Leticia" />
-          <img className="ml-threshold-patio" src="images/hero-patio.webp" alt="Patio interior de Mia Leticia" />
-          <div className="ml-threshold-shade" />
-          <div className="ml-enter-word" aria-label={english ? 'Enter' : 'Entra'}>
-            <span>E</span><span>N</span><span>T</span><span>R</span><span>A</span>
+        <div className="ml-stage ml-threshold-stage">
+          <div className="ml-threshold-frame ml-photo-crop ml-crop-arrival">
+            <img
+              src={hotelPhotos.arrival}
+              alt="Viajeros llegando a Mia Leticia"
+              onError={(event) => fallbackPhoto(event, 'images/warm-interior.webp')}
+            />
           </div>
-          <p className="ml-window ml-threshold-copy left" data-window="0.18:0.42">{english ? 'Not only a hotel.' : 'No llegaste solamente a un hotel.'}</p>
-          <p className="ml-window ml-threshold-copy right" data-window="0.42:0.68">{english ? 'You arrived at a house.' : 'Llegaste a una casa.'}</p>
-          <p className="ml-threshold-address">MONTÚFAR N5-91 Y MEJÍA · CENTRO HISTÓRICO</p>
+          <p className="ml-kicker">{english ? 'FROM THE STREET TO THE HOUSE' : 'DE LA CALLE A LA CASA'}</p>
+          <h2 className="ml-threshold-title">
+            <span className="ml-window" data-window="0.08:0.47">{english ? 'The city stays outside.' : 'La ciudad queda atrás.'}</span>
+            <em className="ml-window" data-window="0.40:0.84">{english ? 'The house starts here.' : 'La casa empieza aquí.'}</em>
+          </h2>
+          <p className="ml-window ml-threshold-note" data-window="0.67:0.98">
+            {english ? 'Montúfar N5-91 and Mejía. Three blocks from Plaza Grande.' : 'Montúfar N5-91 y Mejía. A tres cuadras de la Plaza Grande.'}
+          </p>
+          <div className="ml-threshold-line"><i /></div>
         </div>
       </section>
 
@@ -204,17 +228,72 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="ml-materials" data-scene="materials">
-        <div className="ml-stage ml-materials-stage">
-          <figure className="ml-window ml-material-frame" data-window="0.02:0.36"><img src="images/house-gallery.webp" alt="Galería interior de Mia Leticia" /></figure>
-          <figure className="ml-window ml-material-frame" data-window="0.33:0.68"><img src="images/reading-area.webp" alt="Sala y biblioteca de Mia Leticia" /></figure>
-          <figure className="ml-window ml-material-frame" data-window="0.65:0.98"><img src="images/detail.webp" alt="Detalle interior de Mia Leticia" /></figure>
-          <div className="ml-material-words">
-            <span className="ml-window" data-window="0.04:0.34">{english ? 'Wood.' : 'Madera.'}</span>
-            <span className="ml-window" data-window="0.35:0.66">{english ? 'Wrought iron.' : 'Hierro forjado.'}</span>
-            <span className="ml-window" data-window="0.67:0.96">{english ? 'Adobe.' : 'Adobe.'}</span>
+      <section className="ml-stay" data-scene="stay">
+        <div className="ml-stage ml-stay-stage">
+          <p className="ml-kicker">02 — {english ? 'THE STAY' : 'LA ESTANCIA'}</p>
+
+          <figure className="ml-window ml-stay-shot breakfast ml-photo-crop ml-crop-breakfast" data-window="0.00:0.28">
+            <img
+              loading="lazy"
+              src={hotelPhotos.breakfast}
+              alt="Desayuno en Mia Leticia"
+              onError={(event) => fallbackPhoto(event, 'images/detail.webp')}
+            />
+          </figure>
+          <figure className="ml-window ml-stay-shot games ml-photo-crop ml-crop-games" data-window="0.24:0.52">
+            <img
+              loading="lazy"
+              src={hotelPhotos.games}
+              alt="Huéspedes compartiendo juegos de mesa en Mia Leticia"
+              onError={(event) => fallbackPhoto(event, 'images/reading-area.webp')}
+            />
+          </figure>
+          <figure className="ml-window ml-stay-shot family ml-photo-crop ml-crop-family" data-window="0.48:0.76">
+            <img
+              loading="lazy"
+              src={hotelPhotos.family}
+              alt="Familia en una habitación de Mia Leticia"
+              onError={(event) => fallbackPhoto(event, 'images/room-gallery.webp')}
+            />
+          </figure>
+          <figure className="ml-window ml-stay-shot commons ml-photo-crop ml-crop-commons" data-window="0.72:1.00">
+            <img
+              loading="lazy"
+              src={hotelPhotos.commons}
+              alt="Área común de Mia Leticia"
+              onError={(event) => fallbackPhoto(event, 'images/house-gallery.webp')}
+            />
+          </figure>
+
+          <div className="ml-stay-copy">
+            <article className="ml-window" data-window="0.02:0.27">
+              <small>08:00 — 10:00</small>
+              <h2>{english ? 'Start with breakfast.' : 'Empieza con desayuno.'}</h2>
+              <p>{english ? 'Breakfast is included before the Historic Centre starts calling.' : 'Desayuno incluido antes de salir a caminar el Centro Histórico.'}</p>
+            </article>
+            <article className="ml-window" data-window="0.27:0.51">
+              <small>{english ? 'COMMON AREAS' : 'ESPACIOS COMUNES'}</small>
+              <h2>{english ? 'A place to share.' : 'También se comparte.'}</h2>
+              <p>{english ? 'Reading, board games and corners where the trip slows down for a while.' : 'Lectura, juegos de mesa y rincones donde el viaje baja el ritmo por un momento.'}</p>
+            </article>
+            <article className="ml-window" data-window="0.51:0.75">
+              <small>{english ? 'FAMILY ROOMS' : 'HABITACIONES FAMILIARES'}</small>
+              <h2>{english ? 'Travelling together fits here.' : 'Viajar juntos cabe aquí.'}</h2>
+              <p>{english ? 'Rooms for solo travellers, couples, groups and families.' : 'Habitaciones para quien viaja solo, en pareja, en grupo o en familia.'}</p>
+            </article>
+            <article className="ml-window" data-window="0.75:0.99">
+              <small>{english ? 'THE PRACTICAL SIDE' : 'LO PRÁCTICO'}</small>
+              <h2>{english ? 'The basics are already solved.' : 'Lo básico ya está resuelto.'}</h2>
+              <p>{english ? 'Wi-Fi, 24-hour reception, hot showers and local guidance from the house.' : 'Wi-Fi, recepción 24 horas, duchas calientes y orientación local desde la casa.'}</p>
+            </article>
           </div>
-          <p className="ml-material-note">{english ? 'The materials carry the memory of the house.' : 'Los materiales cargan la memoria de la casa.'}</p>
+
+          <div className="ml-stay-rail" aria-hidden="true">
+            <span><b>01</b> Wi-Fi</span>
+            <span><b>02</b> {english ? 'Breakfast' : 'Desayuno'}</span>
+            <span><b>03</b> {english ? '24h reception' : 'Recepción 24h'}</span>
+            <span><b>04</b> {english ? 'Private bathroom' : 'Baño privado'}</span>
+          </div>
         </div>
       </section>
 
@@ -225,7 +304,7 @@ export default function Home() {
             <img className="ml-room-reveal" src={room.src} alt="" aria-hidden="true" />
           </div>
           <div className="ml-room-shade" />
-          <p className="ml-kicker">02 — {english ? 'ROOMS' : 'HABITACIONES'}</p>
+          <p className="ml-kicker">03 — {english ? 'ROOMS' : 'HABITACIONES'}</p>
           <h2 className="ml-room-title">{english ? 'Sleep here.' : 'Dormir aquí.'}</h2>
           <nav className="ml-room-nav" aria-label={english ? 'Room types' : 'Tipos de habitación'}>
             {roomImages.map((item, index) => (
@@ -293,7 +372,7 @@ export default function Home() {
             return <img key={name} className="ml-window ml-ecuador-image" data-window={`${Math.max(0, start - 0.015)}:${Math.min(1, end)}`} src={image} alt={name} />;
           })}
           <div className="ml-ecuador-shade" />
-          <p className="ml-kicker">03 — {english ? 'BEYOND QUITO' : 'MÁS ALLÁ DE QUITO'}</p>
+          <p className="ml-kicker">04 — {english ? 'BEYOND QUITO' : 'MÁS ALLÁ DE QUITO'}</p>
           <div className="ml-ecuador-track">
             {ecuador.map(([name], index) => (
               <button
@@ -319,7 +398,14 @@ export default function Home() {
 
       <section className="ml-return" id="reserva" data-scene="return">
         <div className="ml-stage ml-return-stage">
-          <img src="images/reading-area.webp" alt="Interior cálido de Mia Leticia" />
+          <div className="ml-return-frame ml-photo-crop ml-crop-return">
+            <img
+              loading="lazy"
+              src={hotelPhotos.returnCouple}
+              alt="Pareja de huéspedes en Mia Leticia"
+              onError={(event) => fallbackPhoto(event, 'images/reading-area.webp')}
+            />
+          </div>
           <div className="ml-return-shade" />
           <h2 className="ml-window ml-return-one" data-window="0.06:0.48">{english ? 'Go out and discover.' : 'Sales a descubrir.'}</h2>
           <h2 className="ml-window ml-return-two" data-window="0.43:0.82">{english ? 'Come back home.' : 'Vuelves a casa.'}</h2>
