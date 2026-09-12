@@ -1,98 +1,177 @@
-/* Photo-led revision built from the user's Mia Leticia image bank.
-   This file deliberately overrides only the duplicated-photo chapters. */
+/* MÍA LETICIA — approved narrative + practical hotel navigation.
+   Local social images are intentionally rendered at <=320 CSS px: no visible upscaling. */
 
-/* Exact clean crops from 1440x1800 promotional originals. The source artwork
-   stays outside the frame; only the photography is visible. */
-.ml-photo-crop{position:relative;overflow:hidden;background:#17130e}
-.ml-photo-crop>img{position:absolute;left:0;top:0;height:auto;max-width:none;filter:saturate(.94) contrast(1.025);will-change:transform}
-.ml-crop-arrival{aspect-ratio:1140/670}.ml-crop-arrival>img{width:126.316%;transform:translate(-10.417%,-36.111%)}
-.ml-crop-commons{aspect-ratio:1400/450}.ml-crop-commons>img{width:102.857%;transform:translate(-1.389%,-36.111%)}
-.ml-crop-family{aspect-ratio:1280/850}.ml-crop-family>img{width:112.5%;transform:translate(-5.556%,-36.111%)}
-.ml-crop-games{aspect-ratio:1360/430}.ml-crop-games>img{width:105.882%;transform:translate(-2.778%,-36.111%)}
-.ml-crop-breakfast{aspect-ratio:1400/600}.ml-crop-breakfast>img{width:102.857%;transform:translate(-1.389%,-32.222%)}
-.ml-crop-return{aspect-ratio:1000/440}.ml-crop-return>img{width:144%;transform:translate(-17.361%,-33.333%)}
+:root{--ml-ink:#15120e;--ml-paper:#eee8db;--ml-gold:#e2ad59;--ml-cream:#f4eee3}
+body.menu-open{overflow:hidden}
 
-/* Threshold — no second facade, no giant ENTRA. */
-.ml-threshold{height:220vh;background:#17130e}
-.ml-threshold-stage{background:radial-gradient(circle at 72% 42%,#3b2b1b 0,#1c1710 35%,#100e0b 76%)}
-.ml-threshold-stage:after{content:'';position:absolute;z-index:4;inset:0;background:linear-gradient(90deg,#100d0aee 0%,#100d0a99 27%,transparent 61%),linear-gradient(180deg,#0004,transparent 40%,#0008);pointer-events:none}
-.ml-threshold-frame{position:absolute;z-index:2;right:3.5vw;top:50%;width:min(72vw,1140px);transform:translateY(-50%) scale(calc(.965 + var(--p)*.035));box-shadow:0 40px 90px #0008;will-change:transform}
-.ml-threshold-frame:after{content:'';position:absolute;inset:0;box-shadow:inset 0 0 0 1px #fff2;pointer-events:none}
-.ml-threshold .ml-kicker{z-index:8;top:17vh;color:#e7b35e}
-.ml-threshold-title{position:absolute;z-index:8;left:3vw;top:27vh;margin:0;width:min(640px,46vw);font:400 clamp(64px,8.6vw,142px)/.78 Georgia,'Times New Roman',serif;letter-spacing:-.065em;color:#f3ede2;text-shadow:0 4px 28px #0008;pointer-events:none}
-.ml-threshold-title span,.ml-threshold-title em{display:block;font-weight:400}
-.ml-threshold-title em{margin-top:.14em;margin-left:5vw;color:#efc77f}
-.ml-threshold-title .ml-window{transform:translate3d(calc((1 - var(--w))*-4vw),calc((1 - var(--w))*2vh),0)}
-.ml-threshold-title em.ml-window{transform:translate3d(calc((1 - var(--w))*5vw),calc((1 - var(--w))*2vh),0)}
-.ml-threshold-note{position:absolute;z-index:8;left:3.2vw;bottom:13vh;width:min(360px,29vw);margin:0;font:italic 15px/1.55 Georgia,serif;color:#ded4c6}
-.ml-threshold-line{position:absolute;z-index:8;left:3vw;bottom:7vh;width:min(370px,31vw);height:1px;background:#fff2;overflow:hidden}
-.ml-threshold-line i{display:block;width:calc(var(--p)*100%);height:100%;background:#e7b35e}
-.ml-threshold-address{display:none}
+/* Practical navigation */
+.masthead{grid-template-columns:auto 1fr auto;height:70px;padding:0 2.2vw;gap:28px;background:linear-gradient(180deg,#0007,transparent);border-bottom:0;mix-blend-mode:normal;pointer-events:auto}
+.masthead .brand{font-weight:800;letter-spacing:.24em;white-space:nowrap}
+.quick-nav{justify-self:center;display:flex;gap:clamp(15px,2.2vw,38px);pointer-events:auto}
+.quick-nav a{position:relative;padding:12px 0;font-size:8px;letter-spacing:.2em;text-transform:uppercase;opacity:.78;transition:opacity .25s}
+.quick-nav a:after{content:'';position:absolute;left:0;right:100%;bottom:7px;height:1px;background:var(--ml-gold);transition:right .3s}
+.quick-nav a:hover{opacity:1}.quick-nav a:hover:after{right:0}
+.mast-tools{display:flex!important;align-items:center;gap:16px!important;pointer-events:auto}
+.mast-tools button,.mast-tools a{font-size:8px!important;letter-spacing:.18em!important;text-transform:uppercase;white-space:nowrap}
+.mast-book{padding:10px 13px!important;border:1px solid #fff7!important;background:#f2eadc12;transition:background .25s,color .25s}
+.mast-book:hover{background:var(--ml-cream);color:#17130f}
+.menu-toggle{display:none}
+.site-menu{position:fixed;z-index:500;inset:0;background:#15120ef5;color:var(--ml-cream);opacity:0;visibility:hidden;transform:translateY(-2%);transition:opacity .35s,transform .35s,visibility .35s}
+.site-menu.open{opacity:1;visibility:visible;transform:none}
+.menu-close{position:absolute;right:3vw;top:28px;border:0;background:none;color:inherit;text-transform:uppercase;letter-spacing:.2em;font-size:9px;cursor:pointer}
+.menu-inner{height:100%;display:flex;flex-direction:column;justify-content:center;padding:9vh 8vw}
+.menu-inner>p{margin:0 0 4vh;font-size:9px;letter-spacing:.28em;color:var(--ml-gold)}
+.menu-inner nav{display:flex;flex-direction:column;align-items:flex-start}
+.menu-inner nav a{font:400 clamp(44px,7vw,106px)/.92 Georgia,serif;letter-spacing:-.055em;transition:color .2s,transform .25s}
+.menu-inner nav a:hover{color:var(--ml-gold);transform:translateX(12px)}
+.menu-book{margin-top:5vh;display:inline-block;width:max-content;border-bottom:1px solid var(--ml-gold);padding-bottom:7px;font-size:10px;letter-spacing:.22em}
+.menu-instagram{margin-top:2vh;font-size:9px;letter-spacing:.14em;opacity:.65}
 
-/* Patio — the patio appears once, deliberately. */
-.ml-patio{height:215vh}
-.ml-patio-stage>img{filter:saturate(.92) contrast(1.03) brightness(.9)}
+/* Hero — same strong opening, corrected supporting copy. */
+.hero{height:125vh}
+.hero .dek{max-width:490px}
 
-/* The stay — replaces the repeated “materials” photo loop with what the hotel actually offers. */
-.ml-stay{height:420vh;background:#17130e}
-.ml-stay-stage{background:linear-gradient(180deg,#17130e 0%,#21180f 100%)}
-.ml-stay-stage:before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 77% 48%,#6e45211f,transparent 42%);pointer-events:none}
-.ml-stay .ml-kicker{top:11vh;color:#e7b35e}
-.ml-stay-shot{position:absolute!important;z-index:2;right:3vw;top:50%;margin:0;opacity:var(--w);transform:translate3d(calc((1 - var(--w))*5vw),-50%,0)!important;box-shadow:0 34px 80px #0007;will-change:opacity,transform}
-.ml-stay-shot:after{content:'';position:absolute;inset:0;box-shadow:inset 0 0 0 1px #fff2;pointer-events:none}
-.ml-stay-shot.breakfast{width:min(66vw,1400px)}
-.ml-stay-shot.games{width:min(69vw,1360px)}
-.ml-stay-shot.family{width:min(55vw,1280px);right:5vw}
-.ml-stay-shot.commons{width:min(69vw,1400px)}
-.ml-stay-copy{position:absolute;z-index:9;left:3vw;top:0;bottom:0;width:min(31vw,470px);pointer-events:none}
-.ml-stay-copy article{position:absolute;left:0;top:31vh;width:100%;margin:0}
-.ml-stay-copy article.ml-window{transform:translate3d(calc((1 - var(--w))*-4vw),calc((1 - var(--w))*2vh),0)}
-.ml-stay-copy small{display:block;margin-bottom:17px;font-size:8px;letter-spacing:.3em;text-transform:uppercase;color:#e7b35e}
-.ml-stay-copy h2{margin:0 0 22px;font:400 clamp(55px,6.1vw,104px)/.82 Georgia,serif;letter-spacing:-.055em;color:#f4eee3}
-.ml-stay-copy p{margin:0;max-width:340px;font:italic 15px/1.6 Georgia,serif;color:#d8cfc1}
-.ml-stay-rail{position:absolute;z-index:10;left:3vw;right:3vw;bottom:5vh;display:flex;justify-content:space-between;gap:18px;padding-top:13px;border-top:1px solid #fff3;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:#d8cfc1}
-.ml-stay-rail b{color:#efc77f;font-weight:400}
+/* Shared photo treatment. Tiny social crops never enlarge beyond source dimensions. */
+.ml-small-photo{position:absolute;width:min(320px,calc(100vw - 40px));overflow:hidden;background:#211b14;box-shadow:0 28px 80px #0008}
+.ml-small-photo img{display:block;width:100%;height:auto;filter:saturate(.94) contrast(1.03)}
+.ml-small-photo:after{content:'';position:absolute;inset:0;box-shadow:inset 0 0 0 1px #fff3;pointer-events:none}
 
-/* Rooms keep the interaction the user liked; only the chapter number moves. */
-.ml-rooms .ml-kicker{color:#f3cc86}
+/* Arrival — street -> house. */
+.ml-arrival{height:225vh;background:var(--ml-ink)}
+.ml-arrival-stage{background:radial-gradient(circle at 74% 47%,#523520 0,#211811 31%,#15120e 65%)}
+.ml-arrival-stage:before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#15120ef0 0%,#15120e8c 42%,transparent 77%),linear-gradient(180deg,#0003,transparent 40%,#0007);z-index:2}
+.ml-arrival-photo{z-index:3;right:8vw;top:50%;transform:translateY(-50%) translate3d(calc(var(--mx)*10px),calc(var(--my)*7px),0) rotate(calc((var(--p) - .5)*2deg));}
+.ml-arrival .ml-kicker{z-index:6;top:15vh}
+.ml-arrival-copy{position:absolute;z-index:6;left:3vw;top:28vh;margin:0;width:min(850px,70vw);font:400 clamp(65px,9.2vw,150px)/.78 Georgia,serif;letter-spacing:-.065em;color:var(--ml-cream)}
+.ml-arrival-copy span,.ml-arrival-copy em{display:block;font-weight:400}
+.ml-arrival-copy em{margin:7vh 0 0 12vw;color:#efc77f}
+.ml-arrival-address{position:absolute;z-index:6;left:3.2vw;bottom:10vh;margin:0;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#d8cec0}
 
-/* Return — a human ending instead of returning to the same patio/reading shot. */
-.ml-return{height:225vh;background:#100e0b}
-.ml-return-stage{background:radial-gradient(circle at 50% 44%,#362719 0,#15110d 54%,#0d0b09 100%)}
-.ml-return-frame{position:absolute;z-index:2;left:50%;top:48%;width:min(76vw,1000px);transform:translate(-50%,-50%) scale(calc(.97 + var(--p)*.025));box-shadow:0 36px 90px #0008;will-change:transform}
-.ml-return-frame:after{content:'';position:absolute;inset:0;box-shadow:inset 0 0 0 1px #fff2;pointer-events:none}
-.ml-return-shade{z-index:3;background:linear-gradient(90deg,#0d0b0877,transparent 36%,transparent 66%,#0d0b0877),linear-gradient(180deg,#0005,transparent 37%,#0008)}
-.ml-return-one,.ml-return-two{z-index:8;text-shadow:0 4px 28px #0009}
-.ml-return-one{left:3vw!important;top:22vh!important}
-.ml-return-two{right:3vw!important;bottom:23vh!important}
-.ml-return-info{z-index:9}
-.ml-return footer{z-index:10}
+/* Patio appears once. */
+.ml-patio{height:220vh!important}
+.ml-patio-stage>img{filter:saturate(.9) contrast(1.03) brightness(.88)!important}
+.ml-patio-copy{width:min(430px,34vw)!important}
 
-@media (max-width:760px){
-  .ml-threshold{height:200vh}
-  .ml-threshold-frame{right:auto;left:4vw;top:45%;width:92vw;transform:translateY(-50%) scale(calc(.975 + var(--p)*.025))}
-  .ml-threshold-stage:after{background:linear-gradient(180deg,#100d0acc 0%,transparent 45%,#100d0adf 100%)}
-  .ml-threshold .ml-kicker{top:12vh;left:5vw}
-  .ml-threshold-title{left:5vw;top:17vh;width:90vw;font-size:clamp(54px,15vw,92px);line-height:.82}
-  .ml-threshold-title em{margin-left:10vw}
-  .ml-threshold-note{left:5vw;right:5vw;bottom:9vh;width:auto;font-size:13px}
-  .ml-threshold-line{left:5vw;right:5vw;bottom:5vh;width:auto}
+/* Life in the house: three distinct human beats. */
+.ml-life{height:395vh;background:#1a1510}
+.ml-life-stage{background:radial-gradient(circle at 50% 45%,#2e2116,#17130f 65%)}
+.ml-life-stage:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,#0002,transparent 50%,#0007);pointer-events:none}
+.ml-life .ml-kicker{z-index:10;top:12vh}
+.ml-life-beat{position:absolute;z-index:8;inset:0;transform:none!important;pointer-events:none}
+.ml-life-beat>.ml-small-photo{pointer-events:none}
+.ml-life-beat>div:last-child{position:absolute;color:var(--ml-cream)}
+.ml-life-beat small{display:block;margin-bottom:18px;font-size:9px;letter-spacing:.25em;color:var(--ml-gold)}
+.ml-life-beat h2{margin:0;font:400 clamp(58px,7.4vw,122px)/.82 Georgia,serif;letter-spacing:-.06em;max-width:860px}
+.ml-life-beat p{margin:20px 0 0;font:italic clamp(23px,3vw,48px)/1.05 Georgia,serif;color:#efc77f}
+.beat-breakfast>.ml-small-photo{right:9vw;top:28vh}
+.beat-breakfast>div:last-child{left:4vw;top:38vh;width:62vw}
+.beat-games>.ml-small-photo{left:8vw;top:23vh}
+.beat-games>div:last-child{right:4vw;top:35vh;width:58vw;text-align:right}
+.beat-games h2{margin-left:auto}.beat-games p{text-align:right}
+.beat-family>.ml-small-photo{right:8vw;top:22vh}
+.beat-family>div:last-child{left:4vw;top:34vh;width:61vw}
 
-  .ml-stay{height:400vh}
-  .ml-stay .ml-kicker{left:5vw;top:10vh}
-  .ml-stay-shot,.ml-stay-shot.breakfast,.ml-stay-shot.games,.ml-stay-shot.family,.ml-stay-shot.commons{right:auto;left:5vw;top:39vh;width:90vw;transform:translate3d(calc((1 - var(--w))*5vw),-50%,0)!important}
-  .ml-stay-copy{left:5vw;right:5vw;top:auto;bottom:12vh;width:auto}
-  .ml-stay-copy article{top:auto;bottom:0;width:100%}
-  .ml-stay-copy h2{font-size:clamp(47px,13vw,72px);line-height:.86;margin-bottom:12px}
-  .ml-stay-copy p{font-size:13px;line-height:1.5;max-width:90%}
-  .ml-stay-rail{left:5vw;right:5vw;bottom:4vh;gap:9px;font-size:6.5px;letter-spacing:.1em;white-space:nowrap;overflow:hidden}
+/* Rooms: preserve the approved interaction, only reinforce practical booking. */
+.ml-rooms .ml-kicker{top:12vh}
+.ml-room-meta{top:12vh!important}
 
-  .ml-return{height:205vh}
-  .ml-return-frame{width:92vw;top:46%}
-  .ml-return-one{left:5vw!important;top:17vh!important}
-  .ml-return-two{right:5vw!important;bottom:26vh!important}
+/* Morning: real room -> real street, with a human moment. */
+.ml-morning{height:280vh!important;background:#17130f}
+.ml-morning-room,.ml-morning-city{position:absolute;inset:-3%;width:106%;height:106%;object-fit:cover;will-change:opacity,transform,filter}
+.ml-morning-room{filter:saturate(.75) brightness(calc(.66 + var(--p)*.12));transform:scale(calc(1.07 - var(--p)*.035));opacity:clamp(0,calc(1.7 - var(--p)*1.65),1)}
+.ml-morning-city{filter:saturate(.92) contrast(1.03);transform:scale(calc(1.07 - var(--p)*.035));opacity:clamp(0,calc((var(--p) - .52)*3.2),1)}
+.ml-morning-shade{position:absolute;z-index:3;inset:0;background:linear-gradient(90deg,#0b090777,transparent 65%),linear-gradient(180deg,#0003,transparent 43%,#0008)}
+.ml-morning-guest{z-index:7;right:6vw;top:19vh!important;transform:translate3d(0,calc((1 - var(--w))*4vh),0)!important}
+.ml-clock{z-index:8!important;left:3vw!important;top:14vh!important}
+.ml-morning-line{z-index:8!important}
+.ml-morning-line.one{left:3vw!important;top:34vh!important}
+.ml-morning-line.two{left:3vw!important;right:auto!important;top:40vh!important;bottom:auto!important;max-width:82vw;color:var(--ml-cream)!important;text-align:left!important}
+
+/* Quito — every label has the correct photograph. */
+.ml-quito{height:390vh!important;background:#111}
+.ml-quito-image{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important;transform:none!important;filter:saturate(.91) contrast(1.04) brightness(.84)}
+.ml-quito-mask{position:absolute;z-index:4;inset:0;background:linear-gradient(90deg,#0908078c,transparent 52%,#0908072c),linear-gradient(180deg,#0002,transparent 46%,#0009);pointer-events:none}
+.ml-route{position:absolute;z-index:7;left:3vw;top:15vh;width:1px;height:70vh;background:#ffffff3a;overflow:hidden}.ml-route i{display:block;width:100%;height:calc(var(--p)*100%);background:var(--ml-gold)}
+.ml-quito-label{position:absolute!important;z-index:9!important;left:7vw!important;top:34vh!important;margin:0!important;font:400 clamp(55px,8vw,132px)/.78 Georgia,serif!important;letter-spacing:-.06em!important;color:var(--ml-cream)!important;text-shadow:0 3px 28px #0009!important;transform:translate3d(calc((1 - var(--w))*5vw),calc((1 - var(--w))*2vh),0)!important}
+.ml-quito-label small{display:block!important;margin:0 0 14px!important;font:400 9px/1 Arial,sans-serif!important;letter-spacing:.24em!important;text-transform:uppercase!important;color:#efc77f!important}
+.ml-quito-word{position:absolute;z-index:5;right:-.06em;bottom:-.12em;font:700 min(26vw,390px)/.8 Arial,sans-serif;color:#fff1;letter-spacing:-.08em}
+.ml-quito-close{position:absolute;z-index:10;right:3vw;bottom:5vh;margin:0;font:italic 15px/1.5 Georgia,serif;color:#f2eadf;text-shadow:0 2px 15px #0009}
+
+/* Bridge into the country — kinetic but not an empty thesis. */
+.ml-journey{height:215vh;background:#111}
+.ml-journey-stage>img{position:absolute;inset:-4%;width:108%;height:108%;object-fit:cover;filter:saturate(.6) brightness(.38);transform:scale(calc(1.05 + var(--p)*.035))}
+.ml-journey-shade{position:absolute;inset:0;background:radial-gradient(circle at 72% 50%,transparent,#090806aa 68%),linear-gradient(90deg,#0d0b08c7,transparent 75%)}
+.ml-journey h2{position:absolute;z-index:5;left:3vw;top:28vh;margin:0;font:400 clamp(70px,10.5vw,172px)/.76 Georgia,serif;letter-spacing:-.07em;color:var(--ml-cream)}
+.ml-journey h2 span,.ml-journey h2 em{display:block;font-weight:400}
+.ml-journey h2 em{margin:7vh 0 0 15vw;color:#efc77f}
+.ml-journey-line{position:absolute;z-index:6;left:3vw;right:3vw;bottom:9vh;height:1px;background:#fff2}.ml-journey-line i{display:block;width:calc(var(--p)*100%);height:100%;background:var(--ml-gold)}
+
+/* Ecuador: retain immersive scroll, now with geographically correct photos. */
+.ml-ecuador{height:430vh!important;background:#111}
+.ml-ecuador-image{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important;transform:none!important;filter:saturate(.94) contrast(1.03) brightness(.84)}
+.ml-ecuador-shade{position:absolute;z-index:4;inset:0;background:linear-gradient(180deg,#0004,transparent 42%,#000a),linear-gradient(90deg,#0004,transparent 70%)}
+.ml-ecuador .ml-kicker{z-index:9;top:12vh}
+.ml-ecuador-track{position:absolute;z-index:9;left:3vw;right:3vw;top:32vh;display:flex;flex-direction:column;align-items:flex-start;gap:4px;pointer-events:auto}
+.ml-ecuador-track button{border:0;background:none;padding:0;color:#fff6;font:400 clamp(42px,6.8vw,110px)/.92 Georgia,serif;letter-spacing:-.055em;cursor:pointer;transition:color .25s,transform .3s,text-shadow .3s}
+.ml-ecuador-track button.active,.ml-ecuador-track button:hover{color:#fff;transform:translateX(2vw);text-shadow:0 3px 24px #0008}
+.ml-ecuador-track button.active:after{content:' —';color:var(--ml-gold)}
+.ml-ecuador-copy{position:absolute;z-index:9;left:3vw;bottom:7vh;margin:0;font:italic clamp(18px,2vw,30px)/1.2 Georgia,serif;color:var(--ml-cream);max-width:620px}
+.ml-ecuador-index{position:absolute;z-index:9;right:3vw;bottom:7vh;font-size:9px;letter-spacing:.2em}
+
+/* Four regions: the previous empty white panel is now four photographic bands. */
+.ml-regions{position:relative;background:#111;color:#fff;min-height:112vh;padding-bottom:18vh;overflow:hidden}
+.ml-regions-grid{height:88vh;display:flex;width:100%;overflow:hidden}
+.ml-region{position:relative;flex:1;min-width:0;overflow:hidden;border-right:1px solid #fff3;transition:flex .55s cubic-bezier(.2,.7,.2,1)}
+.ml-region:last-child{border-right:0}.ml-region:hover{flex:1.55}
+.ml-region img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.86) brightness(.76);transition:transform .7s,filter .5s}.ml-region:hover img{transform:scale(1.04);filter:saturate(1) brightness(.88)}
+.ml-region>div{position:absolute;inset:0;background:linear-gradient(180deg,#0001,transparent 47%,#000b)}
+.ml-region span{position:absolute;z-index:3;left:50%;bottom:5vh;transform:translateX(-50%) rotate(-90deg);font-size:10px;letter-spacing:.32em;white-space:nowrap;transform-origin:center}
+.ml-regions>h2{position:absolute;z-index:5;left:3vw;right:3vw;bottom:3vh;margin:0;font:400 clamp(38px,5.3vw,84px)/.9 Georgia,serif;letter-spacing:-.05em;color:var(--ml-cream)}
+
+/* Gallery: curated, practical, and always links to the hotel's Instagram. */
+.ml-gallery{background:var(--ml-paper);color:var(--ml-ink);padding:16vh 3vw 14vh}
+.ml-gallery-head{display:grid;grid-template-columns:1fr 2fr 1fr;align-items:end;gap:3vw;margin-bottom:9vh}
+.ml-gallery-head p{margin:0;font-size:9px;letter-spacing:.26em;text-transform:uppercase}.ml-gallery-head h2{margin:0;font:400 clamp(58px,8vw,126px)/.8 Georgia,serif;letter-spacing:-.065em}.ml-gallery-head>a{justify-self:end;border-bottom:1px solid;padding-bottom:6px;font-size:9px;letter-spacing:.16em}
+.ml-gallery-grid{display:grid;grid-template-columns:320px minmax(0,1.35fr) minmax(0,.9fr);gap:1.4vw;align-items:start}
+.ml-gallery-grid a{position:relative;display:block;overflow:hidden;background:#cfc7b8}.ml-gallery-grid a:first-child{width:320px;max-width:100%}
+.ml-gallery-grid a:nth-child(2){margin-top:10vh}.ml-gallery-grid a:nth-child(3){margin-top:2vh}
+.ml-gallery-grid img{width:100%;height:min(62vh,680px);object-fit:cover;transition:transform .65s,filter .4s;filter:saturate(.88)}
+.ml-gallery-grid a:first-child img{height:auto;max-width:320px}.ml-gallery-grid a:hover img{transform:scale(1.025);filter:saturate(1)}
+.ml-gallery-grid span{position:absolute;left:16px;bottom:14px;background:#eee8dbdf;padding:7px 9px;font-size:8px;letter-spacing:.18em;text-transform:uppercase}
+.ml-gallery-note{margin:6vh 0 0;font:italic 16px Georgia,serif}
+
+/* Return: people, not patio. */
+.ml-return{height:300vh!important;background:#15120e}
+.ml-return-stage{background:radial-gradient(circle at 72% 44%,#49311f,#17130f 52%,#100e0b 100%)}
+.ml-return-photo{z-index:4;right:7vw;top:18vh}
+.ml-return-shade{position:absolute;z-index:3;inset:0;background:linear-gradient(90deg,#120f0ddd,transparent 70%),linear-gradient(180deg,transparent 58%,#0d0b09dd)}
+.ml-return-one,.ml-return-two,.ml-return-three{position:absolute;z-index:8;margin:0;font:400 clamp(62px,8.7vw,142px)/.8 Georgia,serif;letter-spacing:-.065em;color:var(--ml-cream);text-shadow:0 3px 25px #0008}
+.ml-return-one{left:3vw;top:28vh}.ml-return-two{right:4vw;top:38vh;text-align:right;color:#efc77f}.ml-return-three{left:8vw;top:51vh}
+.ml-final-book{position:absolute;z-index:10;left:3vw;right:3vw;bottom:12vh;display:grid;grid-template-columns:1fr 2fr 1fr;align-items:end;gap:2vw;border-top:1px solid #fff3;padding-top:3vh;transform:translate3d(0,calc((1 - var(--w))*3vh),0)!important}
+.ml-final-book small{font-size:8px;letter-spacing:.24em;color:var(--ml-gold)}.ml-final-book h3{margin:0;font:400 clamp(34px,4.2vw,68px)/.9 Georgia,serif;letter-spacing:-.045em}.ml-final-book p{margin:7px 0 0;font:italic 15px Georgia,serif}.ml-final-book a{justify-self:end;border:1px solid #fff8;padding:14px 16px;font-size:9px;letter-spacing:.2em;transition:background .2s,color .2s}.ml-final-book a:hover{background:var(--ml-cream);color:#17130f}
+.ml-return footer{position:absolute;z-index:12;left:3vw;right:3vw;bottom:3vh;display:grid;grid-template-columns:1fr 1.4fr 1.4fr auto;gap:2vw;font-size:8px;letter-spacing:.13em;text-transform:uppercase;color:#e9e0d2b5}
+.photo-credits{background:#0e0c09;color:#a99f91;padding:12px 3vw 16px;text-align:right;font-size:7px;letter-spacing:.1em}.photo-credits a{text-decoration:underline;text-underline-offset:3px}
+
+@media (max-width:900px){
+  .masthead{grid-template-columns:1fr auto;padding:0 18px}.quick-nav{display:none}.mast-tools{gap:12px!important}.mast-tools>button:first-child{display:none}.mast-book{display:none}.menu-toggle{display:block!important}.masthead .brand{font-size:9px}
+  .hero h1{top:29vh!important;left:20px!important;font-size:clamp(58px,18vw,104px)!important}.hero h1 em{margin-left:8vw!important}.hero h1 span:last-child{margin-left:13vw!important}.hero .folio{left:20px!important}.hero .dek{left:20px!important;right:20px!important;bottom:14vh!important;font-size:14px!important}.hero .enter{right:20px!important}
+  .ml-kicker{left:20px!important}
+  .ml-arrival-photo{right:20px;top:24vh;transform:none}.ml-arrival-copy{left:20px;top:52vh;width:calc(100vw - 40px);font-size:clamp(52px,16vw,82px)}.ml-arrival-copy em{margin:4vh 0 0 9vw}.ml-arrival-address{left:20px;bottom:8vh;font-size:7px}
+  .ml-patio-title{left:20px!important;top:33vh!important;font-size:clamp(56px,17vw,90px)!important}.ml-patio-title em{margin-left:8vw!important}.ml-patio-copy{right:20px!important;left:20px!important;bottom:9vh!important;width:auto!important;font-size:14px!important}
+  .ml-life{height:360vh}.ml-life-beat>.ml-small-photo{top:19vh;left:20px;right:auto}.ml-life-beat>div:last-child{left:20px;right:20px;top:53vh;width:auto;text-align:left}.ml-life-beat h2{font-size:clamp(45px,13vw,72px)}.ml-life-beat p{font-size:clamp(22px,7vw,34px);text-align:left}.beat-games h2{margin-left:0}.beat-family>.ml-small-photo{left:auto;right:20px}
+  .ml-room-title{left:20px!important;top:23vh!important;font-size:clamp(60px,17vw,90px)!important}.ml-room-meta{left:20px!important;right:auto!important;top:13vh!important;max-width:72vw;line-height:1.5}.ml-room-nav{left:20px!important;right:20px!important;bottom:8vh!important;grid-template-columns:1fr 1fr!important}.ml-room-nav button{padding:12px 7px!important}.ml-room-nav button span{font-size:23px!important}.ml-room-hint{display:none}
+  .ml-morning-guest{right:20px;top:18vh!important}.ml-morning-line.one,.ml-morning-line.two{left:20px!important;right:20px!important;font-size:clamp(58px,16vw,88px)!important}.ml-morning-line.one{top:50vh!important}.ml-morning-line.two{top:45vh!important}
+  .ml-route{left:20px!important}.ml-quito-label{left:42px!important;top:37vh!important;font-size:clamp(54px,16vw,88px)!important}.ml-quito-close{left:42px;right:20px;bottom:7vh;font-size:13px}.ml-quito-word{font-size:34vw}
+  .ml-journey h2{left:20px;right:20px;top:31vh;font-size:clamp(56px,17vw,92px)}.ml-journey h2 em{margin:5vh 0 0 8vw}.ml-journey-line{left:20px;right:20px}
+  .ml-ecuador-track{left:20px;right:20px;top:30vh}.ml-ecuador-track button{font-size:clamp(42px,13vw,70px)}.ml-ecuador-copy{left:20px;right:50px;bottom:8vh;font-size:18px}.ml-ecuador-index{right:20px}
+  .ml-regions{min-height:145vh;padding-bottom:24vh}.ml-regions-grid{height:115vh;display:grid;grid-template-columns:1fr 1fr}.ml-region{border-right:1px solid #fff3;border-bottom:1px solid #fff3}.ml-region:hover{flex:1}.ml-region span{transform:none;left:16px;bottom:16px;font-size:8px}.ml-regions>h2{left:20px;right:20px;bottom:5vh;font-size:clamp(38px,11vw,60px)}
+  .ml-gallery{padding:12vh 20px}.ml-gallery-head{display:block}.ml-gallery-head h2{margin:12px 0 20px;font-size:clamp(58px,17vw,90px)}.ml-gallery-head>a{display:inline-block}.ml-gallery-grid{grid-template-columns:1fr;gap:18px}.ml-gallery-grid a:first-child{width:min(320px,100%)}.ml-gallery-grid a:nth-child(2),.ml-gallery-grid a:nth-child(3){margin-top:0}.ml-gallery-grid img{height:54vh}.ml-gallery-grid a:first-child img{height:auto}.ml-gallery-note{margin-top:30px}
+  .ml-return-photo{right:20px;top:17vh}.ml-return-one,.ml-return-two,.ml-return-three{left:20px!important;right:20px!important;text-align:left!important;font-size:clamp(52px,15vw,82px)!important}.ml-return-one{top:47vh}.ml-return-two{top:53vh}.ml-return-three{top:59vh}.ml-final-book{left:20px;right:20px;bottom:14vh;display:block}.ml-final-book h3{margin:14px 0 8px;font-size:clamp(34px,10vw,55px)}.ml-final-book a{display:inline-block;margin-top:18px}.ml-return footer{left:20px;right:20px;bottom:3vh;grid-template-columns:1fr;gap:5px;font-size:7px}
+  .photo-credits{text-align:left;padding:12px 20px 18px}
 }
 
-@media (hover:none){
-  .ml-threshold-frame,.ml-return-frame{box-shadow:0 22px 55px #0007}
+@media (max-width:560px){
+  .menu-inner{padding:10vh 20px}.menu-inner nav a{font-size:clamp(42px,14vw,68px)}
+  .ml-small-photo{width:min(320px,calc(100vw - 40px))}
+  .ml-arrival{height:210vh}.ml-life{height:340vh}.ml-rooms{height:370vh!important}.ml-morning{height:250vh!important}.ml-quito{height:360vh!important}.ml-ecuador{height:400vh!important}.ml-return{height:285vh!important}
 }
