@@ -1,0 +1,98 @@
+/* Photo-led revision built from the user's Mia Leticia image bank.
+   This file deliberately overrides only the duplicated-photo chapters. */
+
+/* Exact clean crops from 1440x1800 promotional originals. The source artwork
+   stays outside the frame; only the photography is visible. */
+.ml-photo-crop{position:relative;overflow:hidden;background:#17130e}
+.ml-photo-crop>img{position:absolute;left:0;top:0;height:auto;max-width:none;filter:saturate(.94) contrast(1.025);will-change:transform}
+.ml-crop-arrival{aspect-ratio:1140/670}.ml-crop-arrival>img{width:126.316%;transform:translate(-10.417%,-36.111%)}
+.ml-crop-commons{aspect-ratio:1400/450}.ml-crop-commons>img{width:102.857%;transform:translate(-1.389%,-36.111%)}
+.ml-crop-family{aspect-ratio:1280/850}.ml-crop-family>img{width:112.5%;transform:translate(-5.556%,-36.111%)}
+.ml-crop-games{aspect-ratio:1360/430}.ml-crop-games>img{width:105.882%;transform:translate(-2.778%,-36.111%)}
+.ml-crop-breakfast{aspect-ratio:1400/600}.ml-crop-breakfast>img{width:102.857%;transform:translate(-1.389%,-32.222%)}
+.ml-crop-return{aspect-ratio:1000/440}.ml-crop-return>img{width:144%;transform:translate(-17.361%,-33.333%)}
+
+/* Threshold — no second facade, no giant ENTRA. */
+.ml-threshold{height:220vh;background:#17130e}
+.ml-threshold-stage{background:radial-gradient(circle at 72% 42%,#3b2b1b 0,#1c1710 35%,#100e0b 76%)}
+.ml-threshold-stage:after{content:'';position:absolute;z-index:4;inset:0;background:linear-gradient(90deg,#100d0aee 0%,#100d0a99 27%,transparent 61%),linear-gradient(180deg,#0004,transparent 40%,#0008);pointer-events:none}
+.ml-threshold-frame{position:absolute;z-index:2;right:3.5vw;top:50%;width:min(72vw,1140px);transform:translateY(-50%) scale(calc(.965 + var(--p)*.035));box-shadow:0 40px 90px #0008;will-change:transform}
+.ml-threshold-frame:after{content:'';position:absolute;inset:0;box-shadow:inset 0 0 0 1px #fff2;pointer-events:none}
+.ml-threshold .ml-kicker{z-index:8;top:17vh;color:#e7b35e}
+.ml-threshold-title{position:absolute;z-index:8;left:3vw;top:27vh;margin:0;width:min(640px,46vw);font:400 clamp(64px,8.6vw,142px)/.78 Georgia,'Times New Roman',serif;letter-spacing:-.065em;color:#f3ede2;text-shadow:0 4px 28px #0008;pointer-events:none}
+.ml-threshold-title span,.ml-threshold-title em{display:block;font-weight:400}
+.ml-threshold-title em{margin-top:.14em;margin-left:5vw;color:#efc77f}
+.ml-threshold-title .ml-window{transform:translate3d(calc((1 - var(--w))*-4vw),calc((1 - var(--w))*2vh),0)}
+.ml-threshold-title em.ml-window{transform:translate3d(calc((1 - var(--w))*5vw),calc((1 - var(--w))*2vh),0)}
+.ml-threshold-note{position:absolute;z-index:8;left:3.2vw;bottom:13vh;width:min(360px,29vw);margin:0;font:italic 15px/1.55 Georgia,serif;color:#ded4c6}
+.ml-threshold-line{position:absolute;z-index:8;left:3vw;bottom:7vh;width:min(370px,31vw);height:1px;background:#fff2;overflow:hidden}
+.ml-threshold-line i{display:block;width:calc(var(--p)*100%);height:100%;background:#e7b35e}
+.ml-threshold-address{display:none}
+
+/* Patio — the patio appears once, deliberately. */
+.ml-patio{height:215vh}
+.ml-patio-stage>img{filter:saturate(.92) contrast(1.03) brightness(.9)}
+
+/* The stay — replaces the repeated “materials” photo loop with what the hotel actually offers. */
+.ml-stay{height:420vh;background:#17130e}
+.ml-stay-stage{background:linear-gradient(180deg,#17130e 0%,#21180f 100%)}
+.ml-stay-stage:before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 77% 48%,#6e45211f,transparent 42%);pointer-events:none}
+.ml-stay .ml-kicker{top:11vh;color:#e7b35e}
+.ml-stay-shot{position:absolute!important;z-index:2;right:3vw;top:50%;margin:0;opacity:var(--w);transform:translate3d(calc((1 - var(--w))*5vw),-50%,0)!important;box-shadow:0 34px 80px #0007;will-change:opacity,transform}
+.ml-stay-shot:after{content:'';position:absolute;inset:0;box-shadow:inset 0 0 0 1px #fff2;pointer-events:none}
+.ml-stay-shot.breakfast{width:min(66vw,1400px)}
+.ml-stay-shot.games{width:min(69vw,1360px)}
+.ml-stay-shot.family{width:min(55vw,1280px);right:5vw}
+.ml-stay-shot.commons{width:min(69vw,1400px)}
+.ml-stay-copy{position:absolute;z-index:9;left:3vw;top:0;bottom:0;width:min(31vw,470px);pointer-events:none}
+.ml-stay-copy article{position:absolute;left:0;top:31vh;width:100%;margin:0}
+.ml-stay-copy article.ml-window{transform:translate3d(calc((1 - var(--w))*-4vw),calc((1 - var(--w))*2vh),0)}
+.ml-stay-copy small{display:block;margin-bottom:17px;font-size:8px;letter-spacing:.3em;text-transform:uppercase;color:#e7b35e}
+.ml-stay-copy h2{margin:0 0 22px;font:400 clamp(55px,6.1vw,104px)/.82 Georgia,serif;letter-spacing:-.055em;color:#f4eee3}
+.ml-stay-copy p{margin:0;max-width:340px;font:italic 15px/1.6 Georgia,serif;color:#d8cfc1}
+.ml-stay-rail{position:absolute;z-index:10;left:3vw;right:3vw;bottom:5vh;display:flex;justify-content:space-between;gap:18px;padding-top:13px;border-top:1px solid #fff3;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:#d8cfc1}
+.ml-stay-rail b{color:#efc77f;font-weight:400}
+
+/* Rooms keep the interaction the user liked; only the chapter number moves. */
+.ml-rooms .ml-kicker{color:#f3cc86}
+
+/* Return — a human ending instead of returning to the same patio/reading shot. */
+.ml-return{height:225vh;background:#100e0b}
+.ml-return-stage{background:radial-gradient(circle at 50% 44%,#362719 0,#15110d 54%,#0d0b09 100%)}
+.ml-return-frame{position:absolute;z-index:2;left:50%;top:48%;width:min(76vw,1000px);transform:translate(-50%,-50%) scale(calc(.97 + var(--p)*.025));box-shadow:0 36px 90px #0008;will-change:transform}
+.ml-return-frame:after{content:'';position:absolute;inset:0;box-shadow:inset 0 0 0 1px #fff2;pointer-events:none}
+.ml-return-shade{z-index:3;background:linear-gradient(90deg,#0d0b0877,transparent 36%,transparent 66%,#0d0b0877),linear-gradient(180deg,#0005,transparent 37%,#0008)}
+.ml-return-one,.ml-return-two{z-index:8;text-shadow:0 4px 28px #0009}
+.ml-return-one{left:3vw!important;top:22vh!important}
+.ml-return-two{right:3vw!important;bottom:23vh!important}
+.ml-return-info{z-index:9}
+.ml-return footer{z-index:10}
+
+@media (max-width:760px){
+  .ml-threshold{height:200vh}
+  .ml-threshold-frame{right:auto;left:4vw;top:45%;width:92vw;transform:translateY(-50%) scale(calc(.975 + var(--p)*.025))}
+  .ml-threshold-stage:after{background:linear-gradient(180deg,#100d0acc 0%,transparent 45%,#100d0adf 100%)}
+  .ml-threshold .ml-kicker{top:12vh;left:5vw}
+  .ml-threshold-title{left:5vw;top:17vh;width:90vw;font-size:clamp(54px,15vw,92px);line-height:.82}
+  .ml-threshold-title em{margin-left:10vw}
+  .ml-threshold-note{left:5vw;right:5vw;bottom:9vh;width:auto;font-size:13px}
+  .ml-threshold-line{left:5vw;right:5vw;bottom:5vh;width:auto}
+
+  .ml-stay{height:400vh}
+  .ml-stay .ml-kicker{left:5vw;top:10vh}
+  .ml-stay-shot,.ml-stay-shot.breakfast,.ml-stay-shot.games,.ml-stay-shot.family,.ml-stay-shot.commons{right:auto;left:5vw;top:39vh;width:90vw;transform:translate3d(calc((1 - var(--w))*5vw),-50%,0)!important}
+  .ml-stay-copy{left:5vw;right:5vw;top:auto;bottom:12vh;width:auto}
+  .ml-stay-copy article{top:auto;bottom:0;width:100%}
+  .ml-stay-copy h2{font-size:clamp(47px,13vw,72px);line-height:.86;margin-bottom:12px}
+  .ml-stay-copy p{font-size:13px;line-height:1.5;max-width:90%}
+  .ml-stay-rail{left:5vw;right:5vw;bottom:4vh;gap:9px;font-size:6.5px;letter-spacing:.1em;white-space:nowrap;overflow:hidden}
+
+  .ml-return{height:205vh}
+  .ml-return-frame{width:92vw;top:46%}
+  .ml-return-one{left:5vw!important;top:17vh!important}
+  .ml-return-two{right:5vw!important;bottom:26vh!important}
+}
+
+@media (hover:none){
+  .ml-threshold-frame,.ml-return-frame{box-shadow:0 22px 55px #0007}
+}
