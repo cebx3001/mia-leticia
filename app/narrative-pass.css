@@ -191,3 +191,35 @@
  .ml-region{transform:translate3d(0,calc((1 - var(--r))*100%),0)!important;opacity:var(--r)!important}
  .ml-city-image-2{object-fit:contain!important}
 }
+
+/* Final scene integrity: explicit viewport widths, beat layout, safe full-frame photographs. */
+.ml-regions{display:block!important;position:relative!important;left:auto!important;right:auto!important;bottom:auto!important;width:100%!important;max-width:none!important;height:360svh!important;min-height:360svh!important;margin:0!important;padding:0!important;overflow:visible!important;isolation:isolate}
+.ml-regions-stage{position:sticky!important;top:0!important;width:100%!important;height:100svh!important;min-height:100svh!important;margin:0!important;padding:0!important;overflow:hidden!important}
+.ml-regions-grid{position:absolute!important;inset:0!important;display:flex!important;flex-flow:row nowrap!important;align-items:stretch!important;width:100%!important;height:100%!important;margin:0!important;padding:0!important}
+.ml-regions-grid>.ml-region{--r:0;position:relative!important;flex:0 0 25%!important;width:25%!important;min-width:25%!important;max-width:25%!important;height:100%!important;min-height:100%!important;opacity:1!important;transform:translate3d(0,calc((1 - var(--r))*100%),0)!important;transition:none!important}
+.ml-regions-grid>.ml-region img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important}
+.ml-regions-stage>h2{left:3vw!important;right:3vw!important;bottom:4vh!important;max-width:93vw!important;font-size:clamp(28px,4.3vw,70px)!important;line-height:1.04!important}
+.ml-ecuador-close{display:none!important}
+.ml-ecuador-track{left:3vw!important;right:auto!important;top:29vh!important;bottom:auto!important;width:min(44vw,600px)!important;max-width:44vw!important;transform:none!important;overflow:visible!important}
+.ml-ecuador-track button{font-size:clamp(31px,5.2vw,78px)!important;line-height:1.02!important}
+.ml-ecuador-copy{right:4vw!important;left:auto!important;top:44vh!important;bottom:auto!important;width:37vw!important;max-width:37vw!important;text-align:right!important}
+.ml-ecuador-intro{display:none!important}
+.ml-city-image{object-fit:contain!important;background:#11161a;transform:none!important}
+.ml-directions-stage{background:#17130e!important}
+.ml-directions-title{top:22vh!important}
+.ml-direction-beat{top:31vh!important}
+.ml-directions .ml-final-book{bottom:15vh!important}
+.ml-directions .ml-final-book h3{font-size:clamp(30px,3.6vw,55px)!important;line-height:1!important}
+@media(max-width:900px){
+ .ml-regions{width:100%!important;height:340svh!important;min-height:340svh!important}
+ .ml-regions-stage{width:100%!important;height:100svh!important;min-height:100svh!important}
+ .ml-regions-grid{display:flex!important;grid-template-columns:none!important}
+ .ml-regions-grid>.ml-region{flex:0 0 25%!important;min-width:25%!important;width:25%!important;transform:translate3d(0,calc((1 - var(--r))*100%),0)!important}
+ .ml-regions-stage>h2{font-size:clamp(26px,6vw,48px)!important;bottom:6vh!important}
+ .ml-ecuador-track{left:20px!important;top:27vh!important;width:calc(100% - 40px)!important;max-width:calc(100% - 40px)!important}
+ .ml-ecuador-track button{font-size:clamp(32px,8vw,62px)!important}
+ .ml-ecuador-copy{top:auto!important;bottom:12vh!important;left:20px!important;right:20px!important;width:auto!important;max-width:none!important;text-align:left!important}
+ .ml-directions-title{top:20vh!important}
+ .ml-direction-beat{top:33vh!important}
+ .ml-directions .ml-final-book{bottom:16vh!important}
+}
