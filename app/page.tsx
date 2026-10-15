@@ -13,9 +13,9 @@ const Q=[
 ['Centro Histórico','Patrimonio de Quito','Quito heritage','https://commons.wikimedia.org/wiki/Special:Redirect/file/Quito%20Panorama%20of%20El%20Panecillo%20from%20Calle%20Cuenca.jpg?width=1920']] as const;
 const CITY=[
 ['El Panecillo','El Panecillo','https://commons.wikimedia.org/wiki/Special:Redirect/file/Quito%20Panorama%20of%20El%20Panecillo%20from%20Calle%20Cuenca.jpg?width=1920'],
-['Teleférico','Cable Car','images/quito-panorama.webp'],
+['Teleférico','Cable Car','https://commons.wikimedia.org/wiki/Special:Redirect/file/Telef%C3%A9rico%20de%20Quito%20-%20Equador%20-%20panoramio%20%286%29.jpg?width=1920'],
 ['Mitad del Mundo','Middle of the World','https://commons.wikimedia.org/wiki/Special:Redirect/file/Mitad%20del%20Mundo%20monument.jpg?width=1920'],
-['Quito contemporáneo','Contemporary Quito','images/quito-panorama.webp']
+['Quito contemporáneo','Contemporary Quito','https://commons.wikimedia.org/wiki/Special:Redirect/file/Quito%20Panorama%20of%20El%20Panecillo%20from%20Calle%20Cuenca.jpg?width=1920']
 ] as const;
 const E=[['Cotopaxi','https://commons.wikimedia.org/wiki/Special:Redirect/file/Cotopaxi%20Volcano.jpg?width=1920'],['Quilotoa','https://commons.wikimedia.org/wiki/Special:Redirect/file/Panorama%20quilotoa%20crater%20lake%20ecuador.jpg?width=1920'],['Otavalo','https://commons.wikimedia.org/wiki/Special:Redirect/file/Otavalo%20Ecuador%201684.jpg?width=1920'],['Papallacta','https://commons.wikimedia.org/wiki/Special:Redirect/file/Laguna%20de%20Papallacta.jpg?width=1920'],['Baños','https://commons.wikimedia.org/wiki/Special:Redirect/file/Pail%C3%B3n%20del%20Diablo%2C%20cerca%20a%20Ba%C3%B1os%2C%20Ecuador%20%283258%29.jpg?width=1920']] as const;
 const G=[['SIERRA','https://commons.wikimedia.org/wiki/Special:Redirect/file/Vista%20panor%C3%A1mica%20del%20Nevado%20Chimborazo%20desde%20Luisa.JPG?width=1600'],['AMAZONÍA','https://commons.wikimedia.org/wiki/Special:Redirect/file/Reserva%20Faun%C3%ADstica%20de%20Cuyabeno%20%28Amazonia%20ecuatoriana%29%20%2820324137164%29.jpg?width=1600'],['COSTA','https://commons.wikimedia.org/wiki/Special:Redirect/file/Playa%20Los%20Frailes.jpg?width=1600'],['GALÁPAGOS','https://commons.wikimedia.org/wiki/Special:Redirect/file/Gal%C3%A1pagos%20beach.jpg?width=1600']] as const;
