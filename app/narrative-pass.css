@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap');
 
 /* NARRATIVE PASS — approved script. Keeps sticky stages, scrubbed windows,
    full-frame photography and kinetic editorial type. */
@@ -232,7 +233,7 @@
 .ml-ecuador-image.ml-destination-2{object-fit:contain!important;background:#191a16!important;object-position:center center!important}
 
 /* Single editorial type system: monumental display + legible humanist body. */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap');
+
 :root{--ml-display:'DM Serif Display',Georgia,serif;--ml-body:'DM Sans',Arial,sans-serif}
 .ml-patio-title,.ml-patio-title *, .ml-patio-copy,.ml-patio-copy-two,.ml-patio-close,.ml-amenities-title,.ml-amenity h3,.ml-quito-label strong,.ml-city-beat h2,.ml-ecuador-track button,.ml-regions-stage>h2,.ml-direction-beat h3,.ml-directions-title h2{font-family:var(--ml-display)!important;font-weight:400!important}
 .ml-patio-copy,.ml-patio-copy-two,.ml-patio-close{font-size:clamp(23px,2.7vw,43px)!important;line-height:1.19!important;letter-spacing:-.02em!important;width:min(880px,65vw)!important;max-width:unset!important;text-shadow:0 3px 24px #000c}
