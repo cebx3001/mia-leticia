@@ -227,3 +227,6 @@
 /* Authentic service content: never illustrate facilities with unrelated stock pools or hotel bathrooms. */
 .ml-amenity>img[src=""]{display:none!important}.ml-amenity:has(>img[src=""]){grid-template-columns:1fr!important}.ml-amenity:has(>img[src=""])>div{max-width:780px;margin-left:10vw}.ml-amenity:has(>img[src=""]) h3{font-size:clamp(42px,6vw,102px)}
 .ml-city-image-3{object-fit:cover!important;object-position:center center!important}
+
+/* Preserve whole Otavalo portrait rather than cropping out the people. */
+.ml-ecuador-image.ml-destination-2{object-fit:contain!important;background:#191a16!important;object-position:center center!important}
