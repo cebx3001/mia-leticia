@@ -147,5 +147,5 @@
 .ml-ecuador-image{opacity:0!important;transition:opacity .38s ease!important;visibility:visible;will-change:opacity}
 .ml-ecuador-image.is-active{opacity:1!important}
 /* QUITO is a persistent typographic layer for the entire Historic Centre scene. */
-.ml-quito-word{opacity:1!important;visibility:visible!important;z-index:6!important;pointer-events:none;transform:translate3d(calc((.5 - var(--p))*18vw),0,0)!important}
+.ml-quito-word{opacity:1!important;visibility:visible!important;z-index:6!important;pointer-events:none;transform:translate3d(calc(30vw - var(--p)*55vw),0,0)!important}
 @media(prefers-reduced-motion:reduce){.ml-ecuador-image{transition:none!important}}
