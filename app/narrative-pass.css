@@ -223,3 +223,7 @@
  .ml-direction-beat{top:33vh!important}
  .ml-directions .ml-final-book{bottom:16vh!important}
 }
+
+/* Authentic service content: never illustrate facilities with unrelated stock pools or hotel bathrooms. */
+.ml-amenity>img[src=""]{display:none!important}.ml-amenity:has(>img[src=""]){grid-template-columns:1fr!important}.ml-amenity:has(>img[src=""])>div{max-width:780px;margin-left:10vw}.ml-amenity:has(>img[src=""]) h3{font-size:clamp(42px,6vw,102px)}
+.ml-city-image-3{object-fit:cover!important;object-position:center center!important}
