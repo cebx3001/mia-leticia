@@ -8,14 +8,14 @@ const R=[
 const S={arrival:'images/social/arrival.webp',breakfast:'images/social/breakfast.webp',games:'images/social/games.webp',family:'images/social/family.webp',morning:'images/social/morning.webp',guests:'images/social/guests.webp',ret:'images/social/return.webp'};
 const Q=[
 ['Plaza Grande','3 cuadras','3 blocks','https://commons.wikimedia.org/wiki/Special:Redirect/file/Quito%20Plaza%20Independencia.jpg?width=1920'],
-['Catedral Metropolitana','Centro Histórico','Historic Centre','https://commons.wikimedia.org/wiki/Special:Redirect/file/%28Catedral%20Metropolitana%2C%20Quito%29%20exterior%20%28pic.bb8%29.jpg?width=1920'],
+['Catedral Metropolitana','Centro Histórico','Historic Centre','https://commons.wikimedia.org/wiki/Special:Redirect/file/Catedral%20Metropolitana%2C%20facing%20Plaza%20de%20la%20Independencia%20%28Quito%29.JPG?width=1920'],
 ['La Compañía','Barroco quiteño','Quito Baroque','https://commons.wikimedia.org/wiki/Special:Redirect/file/Iglesia%20de%20La%20Compa%C3%B1%C3%ADa%2C%20Quito%2C%20Ecuador%2C%202015-07-22%2C%20DD%20149-151%20HDR.JPG?width=1920'],
 ['Centro Histórico','Patrimonio de Quito','Quito heritage','https://commons.wikimedia.org/wiki/Special:Redirect/file/Quito%20Panorama%20of%20El%20Panecillo%20from%20Calle%20Cuenca.jpg?width=1920']] as const;
 const CITY=[
 ['El Panecillo','El Panecillo','https://commons.wikimedia.org/wiki/Special:Redirect/file/Quito%20Panorama%20of%20El%20Panecillo%20from%20Calle%20Cuenca.jpg?width=1920'],
-['Teleférico','Cable Car','https://commons.wikimedia.org/wiki/Special:Redirect/file/Telef%C3%A9rico%20de%20Quito%20-%20Equador%20-%20panoramio%20%286%29.jpg?width=1920'],
-['Mitad del Mundo','Middle of the World','https://commons.wikimedia.org/wiki/Special:Redirect/file/Mitad%20del%20Mundo%20monument.jpg?width=1920'],
-['Quito contemporáneo','Contemporary Quito','https://commons.wikimedia.org/wiki/Special:Redirect/file/Quito%20Panorama%20of%20El%20Panecillo%20from%20Calle%20Cuenca.jpg?width=1920']
+['Teleférico','Cable Car','https://commons.wikimedia.org/wiki/Special:Redirect/file/Quito%20y%20su%20telef%C3%A9rico%20-%20panoramio.jpg?width=1920'],
+['Mitad del Mundo','Middle of the World','https://commons.wikimedia.org/wiki/Special:Redirect/file/Mitad%20del%20Mundo%2C%20Ecuador%202.jpg?width=1920'],
+['Quito contemporáneo','Contemporary Quito','https://commons.wikimedia.org/wiki/Special:Redirect/file/Parque%20La%20Carolina%20in%20Quito.jpg?width=1920']
 ] as const;
 const E=[['Cotopaxi','https://commons.wikimedia.org/wiki/Special:Redirect/file/Cotopaxi%20Volcano.jpg?width=1920'],['Quilotoa','https://commons.wikimedia.org/wiki/Special:Redirect/file/Panorama%20quilotoa%20crater%20lake%20ecuador.jpg?width=1920'],['Otavalo','https://commons.wikimedia.org/wiki/Special:Redirect/file/Otavalo%20Ecuador%201684.jpg?width=1920'],['Papallacta','https://commons.wikimedia.org/wiki/Special:Redirect/file/Laguna%20de%20Papallacta.jpg?width=1920'],['Baños','https://commons.wikimedia.org/wiki/Special:Redirect/file/Pail%C3%B3n%20del%20Diablo%2C%20cerca%20a%20Ba%C3%B1os%2C%20Ecuador%20%283258%29.jpg?width=1920']] as const;
 const G=[['SIERRA','https://commons.wikimedia.org/wiki/Special:Redirect/file/Vista%20panor%C3%A1mica%20del%20Nevado%20Chimborazo%20desde%20Luisa.JPG?width=1600'],['AMAZONÍA','https://commons.wikimedia.org/wiki/Special:Redirect/file/Reserva%20Faun%C3%ADstica%20de%20Cuyabeno%20%28Amazonia%20ecuatoriana%29%20%2820324137164%29.jpg?width=1600'],['COSTA','https://commons.wikimedia.org/wiki/Special:Redirect/file/Playa%20Los%20Frailes.jpg?width=1600'],['GALÁPAGOS','https://commons.wikimedia.org/wiki/Special:Redirect/file/Gal%C3%A1pagos%20beach.jpg?width=1600']] as const;
@@ -55,7 +55,7 @@ export default function V2(){
 <div className="ml-amenities-line"><i/></div></div></section>
  <section className="ml-quito" id="quito" data-scene="quito"><div className="ml-stage ml-quito-stage">{Q.map((q,i)=><img key={q[0]} className="ml-window ml-quito-image" data-window={beatWindow(i,Q.length)} src={q[3]} alt={q[0]}/>)}<div className="ml-quito-mask"/><p className="ml-kicker ml-quito-kicker">04 — {t('CENTRO HISTÓRICO','HISTORIC CENTRE')}</p><div className="ml-route"><i/></div>{Q.map((q,i)=><article key={q[0]} className="ml-window ml-quito-label" data-window={beatWindow(i,Q.length)}><small>{en?q[2]:q[1]}</small><strong>{q[0]}</strong><span>{en?QD[i][1]:QD[i][0]}</span></article>)}<p className="ml-quito-close">{t('Desde Mía Leticia, esa parte de Quito empieza al salir por la puerta.','From Mía Leticia, this part of Quito begins the moment you step outside.')}</p><b className="ml-quito-word">QUITO</b></div></section>
  <section className="ml-city" data-scene="city"><div className="ml-stage ml-city-stage">
- {CITY.map((x,i)=><img key={x[0]} className="ml-window ml-city-image" data-window={beatWindow(i,CITY.length)} src={x[2]} alt={x[0]}/>)}
+ {CITY.map((x,i)=><img key={x[0]} className={`ml-window ml-city-image ml-city-image-${i}`} data-window={beatWindow(i,CITY.length)} src={x[2]} alt={x[0]}/>)}
  <div className="ml-city-shade"/><p className="ml-kicker">05 — QUITO</p><b className="ml-city-giant">LA CIUDAD</b>
  {CITY.map((x,i)=><article key={x[0]} className="ml-window ml-city-beat" data-window={beatWindow(i,CITY.length)}><small>QUITO / 0{i+1}</small><h2>{en?x[1]:x[0]}</h2></article>)}
  <div className="ml-city-progress"><i/></div></div></section>
