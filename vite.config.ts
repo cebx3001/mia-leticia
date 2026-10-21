@@ -1,7 +1,8 @@
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 export default defineConfig({
-  base: '/mia-leticia/',
+  // Relative assets work at both the repository URL and the custom-domain root.
+  base: './',
   plugins: [react()],
   build: {
     rolldownOptions: {

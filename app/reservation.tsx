@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import type { FormEvent } from 'react';
 
-const BASE = import.meta.env.BASE_URL;
 const EMAIL = 'info@mialeticia.com';
 const PHONE = '+593 98 202 3389';
 
@@ -16,7 +15,9 @@ function followingDay(value: string) {
 
 export default function Reservation() {
   const en = new URLSearchParams(window.location.search).get('lang') === 'en';
-  const sent = window.location.pathname.replace(/index\.html$/, '').endsWith('/gracias/');
+  const pagePath = window.location.pathname.replace(/index\.html$/, '');
+  const sent = pagePath.endsWith('/gracias/');
+  const BASE = new URL(sent ? '../../' : '../', window.location.origin + pagePath).pathname;
   const t = (es: string, english: string) => en ? english : es;
   const today = localDate(new Date());
   const [arrival, setArrival] = useState('');
