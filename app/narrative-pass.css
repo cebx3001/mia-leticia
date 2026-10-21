@@ -380,3 +380,29 @@
   .ml-amenity h3{font-size:clamp(42px,11vw,72px)!important}
   .ml-amenity p{font-size:clamp(17px,4.3vw,24px)!important}
 }
+
+/* 2026-10-20 · Quito city sequence is full-bleed on mobile and desktop. */
+.ml-city-image{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center center!important;
+  background:#0f1112!important;
+  transform:scale(calc(1.06 - var(--p)*.035))!important;
+}
+.ml-city-image-0{object-position:center 48%!important}
+.ml-city-image-1{object-position:center 52%!important}
+.ml-city-image-2{object-position:center 50%!important}
+.ml-city-image-3{object-position:center 46%!important}
+@media(max-width:900px){
+  .ml-city-image{
+    width:100vw!important;
+    height:100svh!important;
+    object-fit:cover!important;
+    inset:0!important;
+  }
+  .ml-city-image-0{object-position:center 50%!important}
+  .ml-city-image-1{object-position:center 50%!important}
+  .ml-city-image-2{object-position:center 50%!important}
+  .ml-city-image-3{object-position:center 44%!important}
+}
