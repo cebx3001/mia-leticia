@@ -32,7 +32,7 @@ img{display:block}
 .hero{height:125vh;position:relative;overflow:hidden;background:#111}
 .hero>img{position:fixed;z-index:0;inset:0;width:100%;height:100vh;object-fit:cover;object-position:center;transform:scale(calc(1.045 + var(--progress)*.055));filter:saturate(.92) contrast(1.03);will-change:transform}
 .hero>.hero-photo{position:fixed;z-index:0;inset:0;width:100%;height:100vh;display:block}.hero>.hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transform:scale(calc(1.045 + var(--progress)*.055));filter:saturate(.92) contrast(1.03);will-change:transform}
-.hero .shade{z-index:1}
+.hero .shade{z-index:1;background:linear-gradient(180deg,#0003 0%,transparent 40%,#0006 100%)}
 .hero .folio{position:absolute;z-index:3;top:19vh;left:3vw}
 .hero h1{position:absolute;z-index:3;top:25vh;left:3vw;margin:0;display:flex;flex-direction:column;font:400 clamp(70px,10.8vw,178px)/.73 Georgia,'Times New Roman',serif;letter-spacing:-.065em;text-shadow:0 3px 24px #120d0875}
 .hero h1 span,.hero h1 em{display:block}
@@ -68,8 +68,8 @@ img{display:block}
 /* 02 — patio: a deliberate pause. */
 .ml-patio{height:230vh;background:#17140f}
 .ml-patio-stage>img{position:absolute;inset:-3%;width:106%;height:106%;object-fit:cover;transform:scale(calc(1.06 - var(--p)*.035));filter:saturate(.91) contrast(1.02) brightness(.91);will-change:transform}
-.ml-patio-stage>.ml-patio-photo{position:absolute;inset:-3%;width:106%;height:106%;display:block}.ml-patio-stage>.ml-patio-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(calc(1.06 - var(--p)*.035));filter:saturate(.91) contrast(1.02) brightness(.91);will-change:transform}
-.ml-patio-stage:after{content:'';position:absolute;z-index:3;inset:0;background:linear-gradient(90deg,#100d0875 0%,transparent 58%,#100d0829),linear-gradient(180deg,transparent 52%,#0b090672)}
+.ml-patio-stage>.ml-patio-photo{position:absolute;inset:-3%;width:106%;height:106%;display:block}.ml-patio-stage>.ml-patio-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(calc(1.06 - var(--p)*.035));filter:saturate(.91) contrast(1.02) brightness(.97);will-change:transform}
+.ml-patio-stage:after{content:'';position:absolute;z-index:3;inset:0;background:linear-gradient(90deg,#100d0838 0%,transparent 58%,#100d0817),linear-gradient(180deg,transparent 52%,#0b09063d)}
 .ml-cursor-light{position:absolute;z-index:4;inset:0;background:radial-gradient(circle 220px at var(--px) var(--py),rgba(255,223,160,.16),rgba(255,218,148,.055) 34%,transparent 72%);mix-blend-mode:screen;pointer-events:none;transition:opacity .3s}
 .ml-patio .ml-kicker{z-index:7}
 .ml-patio-title{position:absolute;z-index:7;left:3vw;top:29vh;margin:0;font:400 clamp(78px,11vw,178px)/.73 Georgia,serif;letter-spacing:-.07em;color:#f5efe4;text-shadow:0 4px 30px #0007}
@@ -97,7 +97,7 @@ img{display:block}
 .ml-room-image img{position:absolute;inset:-2%;width:104%;height:104%;object-fit:cover;transform:scale(calc(1.035 + var(--p)*.025));transition:opacity .48s ease,filter .48s ease;will-change:filter,transform}
 .ml-room-image>img:first-child{filter:saturate(.72) contrast(1.04) brightness(.67)}
 .ml-room-reveal{filter:saturate(.98) contrast(1.02) brightness(.98)!important;-webkit-mask-image:radial-gradient(circle 220px at var(--px) var(--py),#000 0 34%,rgba(0,0,0,.9) 48%,transparent 72%);mask-image:radial-gradient(circle 220px at var(--px) var(--py),#000 0 34%,rgba(0,0,0,.9) 48%,transparent 72%)}
-.ml-room-shade{position:absolute;z-index:3;inset:0;background:linear-gradient(90deg,#0d0b0888 0%,#0d0b0822 45%,#0d0b0870 100%),linear-gradient(180deg,#0002,transparent 52%,#000a);pointer-events:none}
+.ml-room-shade{position:absolute;z-index:3;inset:0;background:linear-gradient(90deg,#0d0b0847 0%,#0d0b080d 45%,#0d0b0833 100%),linear-gradient(180deg,#0001,transparent 52%,#0006);pointer-events:none}
 .ml-rooms .ml-kicker{z-index:8}
 .ml-room-title{position:absolute;z-index:8;left:3vw;top:22vh;margin:0;font:400 clamp(74px,10vw,160px)/.74 Georgia,serif;letter-spacing:-.07em;color:#f6efe5;text-shadow:0 3px 24px #0007;pointer-events:none;transform:translateX(calc(var(--mx)*8px))}
 .ml-room-nav{position:absolute;z-index:9;left:3vw;right:3vw;bottom:9vh;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #fff6;border-bottom:1px solid #fff4}
@@ -206,7 +206,7 @@ img{display:block}
 /* Responsive room photography: dedicated desktop + mobile compositions. */
 .ml-room-image picture{position:absolute;inset:0;display:block;width:100%;height:100%}
 .ml-room-image picture img{position:absolute;inset:-2%;width:104%;height:104%;object-fit:cover;transform:scale(calc(1.035 + var(--p)*.025));transition:opacity .48s ease,filter .48s ease;will-change:filter,transform}
-.ml-room-image>picture:first-child img{filter:saturate(.72) contrast(1.04) brightness(.67)}
+.ml-room-image>picture:first-child img{filter:saturate(.72) contrast(1.04) brightness(.92)}
 .ml-room-image>picture.ml-room-reveal{filter:saturate(.98) contrast(1.02) brightness(.98);-webkit-mask-image:radial-gradient(circle 220px at var(--px) var(--py),#000 0 34%,rgba(0,0,0,.9) 48%,transparent 72%);mask-image:radial-gradient(circle 220px at var(--px) var(--py),#000 0 34%,rgba(0,0,0,.9) 48%,transparent 72%)}
 @media(max-width:767px){.ml-room-image picture img{inset:0;width:100%;height:100%;object-position:center center;transform:scale(calc(1.01 + var(--p)*.018))}.ml-room-image>picture.ml-room-reveal{-webkit-mask-image:none;mask-image:none;opacity:0}}
 

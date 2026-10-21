@@ -111,7 +111,7 @@
 /* 12 — Practical arrival + booking */
 .ml-directions{height:455vh;background:#111}
 .ml-directions-stage>img{position:absolute;inset:-3%;width:106%;height:106%;object-fit:cover;filter:saturate(.82) brightness(.48);transform:scale(calc(1.08 - var(--p)*.03));will-change:transform}
-.ml-directions-shade{position:absolute;z-index:3;inset:0;background:linear-gradient(90deg,#0b0907de 0%,#0b09078b 48%,#0b090740 78%),linear-gradient(180deg,#0005,transparent 42%,#000d)}
+.ml-directions-shade{position:absolute;z-index:3;inset:0;background:linear-gradient(90deg,#0b09076b 0%,#0b09072e 48%,#0b090752 100%),linear-gradient(180deg,#0002,transparent 42%,#0005)}
 .ml-directions .ml-kicker{z-index:10;top:12vh}
 .ml-directions-title{position:absolute;z-index:8;left:4vw;top:25vh;width:min(850px,72vw);color:var(--ml-cream);opacity:clamp(0,calc((.25 - var(--p))*7),1);transform:translateY(calc(var(--p)*-4vh))}
 .ml-directions-title h2{margin:0;font:400 clamp(62px,8.2vw,134px)/.8 Georgia,serif;letter-spacing:-.065em}
@@ -247,7 +247,7 @@
 .ml-ecuador-image.ml-destination-2{object-fit:cover!important;object-position:center center!important;background:#10100e!important}
 .ml-regions-grid>.ml-region span{z-index:10!important;bottom:12vh!important;left:50%!important;font:600 clamp(18px,2.8vw,46px)/1 var(--ml-body)!important;color:#fff!important;letter-spacing:.06em!important;text-shadow:0 3px 16px #000,0 0 30px #000!important;writing-mode:vertical-rl!important;transform:translateX(-50%) rotate(180deg)!important;white-space:nowrap!important;opacity:1!important}
 .ml-directions-visuals{position:absolute;inset:0;z-index:1;pointer-events:none}
-.ml-directions-visuals>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.35) saturate(.75)}
+.ml-directions-visuals>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.88) saturate(.75)}
 .ml-directions-map{position:relative;overflow:hidden;background:#e7e2d8;height:58vh;min-height:320px;grid-column:1;grid-row:1}
 .ml-directions-map iframe{width:100%;height:100%;border:0;display:block;filter:none;pointer-events:auto}
 .ml-directions-visuals .ml-map-link{position:absolute;right:4vw;top:22vh;z-index:5;padding:13px 17px;border:1px solid #fff;color:#fff;pointer-events:auto;font:600 13px var(--ml-body);letter-spacing:.13em}
@@ -478,7 +478,7 @@
   max-width:none!important;
   object-fit:cover!important;
   object-position:center center!important;
-  filter:saturate(.92) contrast(1.04) brightness(.78)!important;
+  filter:saturate(.92) contrast(1.04) brightness(.95)!important;
   transform:scale(1.015);
 }
 .amenity-breakfast>img{object-position:62% 50%!important}
@@ -492,8 +492,8 @@
   inset:0;
   pointer-events:none;
   background:
-    linear-gradient(90deg,rgba(20,12,8,.90) 0%,rgba(20,12,8,.70) 24%,rgba(20,12,8,.22) 53%,rgba(20,12,8,.04) 76%),
-    linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.24));
+    linear-gradient(90deg,rgba(20,12,8,.60) 0%,rgba(20,12,8,.42) 24%,rgba(20,12,8,.10) 53%,rgba(20,12,8,.02) 76%),
+    linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.12));
 }
 .ml-amenity>div{
   position:absolute!important;
@@ -554,8 +554,8 @@
   .amenity-reception>img{object-position:63% 50%!important}
   .ml-amenity:after{
     background:
-      linear-gradient(90deg,rgba(18,11,7,.91) 0%,rgba(18,11,7,.63) 43%,rgba(18,11,7,.10) 80%),
-      linear-gradient(0deg,rgba(0,0,0,.18),transparent 60%);
+      linear-gradient(90deg,rgba(18,11,7,.60) 0%,rgba(18,11,7,.35) 43%,rgba(18,11,7,.05) 80%),
+      linear-gradient(0deg,rgba(0,0,0,.10),transparent 60%);
   }
   .ml-amenity>div{
     top:50%!important;
