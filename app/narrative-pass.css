@@ -331,3 +331,52 @@
  .ml-location-copy a{font-size:14px}
  .ml-location-frame{height:58vh;min-height:380px}
 }
+
+
+/* 2026-10-20 · Services are intentionally text-only. */
+.ml-amenities-stage{
+  background:
+    radial-gradient(circle at 78% 28%,rgba(225,170,82,.10),transparent 34%),
+    linear-gradient(180deg,#181510 0%,#100e0b 100%)!important;
+}
+.ml-amenities-back{display:none!important}
+.ml-amenities-shade{
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.18),transparent 68%),
+    linear-gradient(0deg,rgba(0,0,0,.25),transparent 60%)!important;
+}
+.ml-amenity{
+  left:4vw!important;
+  right:4vw!important;
+  top:38vh!important;
+  display:block!important;
+  grid-template-columns:none!important;
+  gap:0!important;
+  align-items:initial!important;
+}
+.ml-amenity>img,.ml-amenity>.ml-service-art{display:none!important}
+.ml-amenity>div{
+  width:min(980px,82vw)!important;
+  max-width:980px!important;
+  margin:0!important;
+}
+.ml-amenity h3{
+  max-width:900px!important;
+  margin:18px 0 22px!important;
+}
+.ml-amenity p{
+  max-width:720px!important;
+}
+@media(max-width:900px){
+  .ml-amenity{
+    left:20px!important;
+    right:20px!important;
+    top:35vh!important;
+  }
+  .ml-amenity>div{
+    width:100%!important;
+    max-width:none!important;
+  }
+  .ml-amenity h3{font-size:clamp(42px,11vw,72px)!important}
+  .ml-amenity p{font-size:clamp(17px,4.3vw,24px)!important}
+}
