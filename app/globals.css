@@ -200,3 +200,10 @@ img{display:block}
   .ml-window{opacity:1!important;transform:none!important}
   .ml-cursor-light,.ml-room-reveal{display:none!important}
 }
+
+/* Responsive room photography: dedicated desktop + mobile compositions. */
+.ml-room-image picture{position:absolute;inset:0;display:block;width:100%;height:100%}
+.ml-room-image picture img{position:absolute;inset:-2%;width:104%;height:104%;object-fit:cover;transform:scale(calc(1.035 + var(--p)*.025));transition:opacity .48s ease,filter .48s ease;will-change:filter,transform}
+.ml-room-image>picture:first-child img{filter:saturate(.72) contrast(1.04) brightness(.67)}
+.ml-room-image>picture.ml-room-reveal{filter:saturate(.98) contrast(1.02) brightness(.98);-webkit-mask-image:radial-gradient(circle 220px at var(--px) var(--py),#000 0 34%,rgba(0,0,0,.9) 48%,transparent 72%);mask-image:radial-gradient(circle 220px at var(--px) var(--py),#000 0 34%,rgba(0,0,0,.9) 48%,transparent 72%)}
+@media(max-width:767px){.ml-room-image picture img{inset:0;width:100%;height:100%;object-position:center center;transform:scale(calc(1.01 + var(--p)*.018))}.ml-room-image>picture.ml-room-reveal{-webkit-mask-image:none;mask-image:none;opacity:0}}
