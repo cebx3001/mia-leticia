@@ -1,10 +1,10 @@
 'use client';
 import {useEffect,useRef,useState} from 'react';
 const R=[
-['Simple','Single','images/rooms/simple-desktop.webp','images/rooms/simple-mobile.webp'],
-['Doble','Double','images/rooms/double-desktop.webp','images/rooms/double-mobile.webp'],
-['Triple','Triple','images/rooms/triple-desktop.webp','images/rooms/triple-mobile.webp'],
-['Familiar','Family','images/rooms/family-desktop.webp','images/rooms/family-mobile.webp']] as const;
+['Simple','Single','images/rooms/simple-desktop.png','images/rooms/simple-mobile.png'],
+['Doble','Double','images/rooms/double-desktop.png','images/rooms/double-mobile.png'],
+['Triple','Triple','images/rooms/triple-desktop.png','images/rooms/triple-mobile.png'],
+['Familiar','Family','images/rooms/family-desktop.png','images/rooms/family-mobile.png']] as const;
 const S={arrival:'images/social/arrival.webp',breakfast:'images/social/breakfast.webp',games:'images/social/games.webp',family:'images/social/family.webp',morning:'images/social/morning.webp',guests:'images/social/guests.webp',ret:'images/social/return.webp'};
 const Q=[
 ['Plaza Grande','3 cuadras','3 blocks','https://commons.wikimedia.org/wiki/Special:Redirect/file/Quito%20Plaza%20Independencia.jpg?width=1920'],
