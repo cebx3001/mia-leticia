@@ -583,3 +583,10 @@
   .ml-amenity h3{font-size:21px!important}
   .ml-amenity p{font-size:10px!important}
 }
+
+/* Responsive room photography */
+.ml-room-mobile{display:none!important}
+@media(max-width:700px){
+  .ml-room-desktop{display:none!important}
+  .ml-room-mobile{display:block!important}
+}
