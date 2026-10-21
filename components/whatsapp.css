@@ -17,3 +17,6 @@
 .whatsapp-float svg{display:block;width:34px;height:34px}
 .whatsapp-float:hover{background:#11713a}
 .whatsapp-float:focus-visible{outline:3px solid #efc77f;outline-offset:4px}
+.ml-directions footer{right:max(88px,3vw)}
+.photo-credits{padding-right:max(88px,3vw)}
+.reservation-footer{padding-right:max(88px,6vw)}
