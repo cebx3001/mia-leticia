@@ -41,6 +41,9 @@ a:focus-visible,button:focus-visible{outline:2px solid #efc77f;outline-offset:6p
 .reservation-fields textarea::placeholder,.reservation-fields input::placeholder{color:#746958;opacity:1}
 .reservation-fields input:focus,.reservation-fields select:focus,.reservation-fields textarea:focus{outline:2px solid #9d6a27;outline-offset:2px}
 .reservation-use{font-size:11px;line-height:1.7;color:#665b4d;margin:0 0 22px}
+.reservation-error{border-left:3px solid #9b3829;background:#f8ded4;color:#76271d;padding:16px;margin-bottom:20px;font-size:12px;line-height:1.7;overflow-wrap:anywhere}
+.reservation-error p{margin:0 0 10px}
+.reservation-error a{display:table;text-decoration:underline;margin-top:5px}
 .reservation-submit,.reservation-return{display:flex;justify-content:space-between;align-items:center;gap:20px;width:100%;border:1px solid #261f16;background:#261f16;color:#f4eee3;padding:18px 20px;font-size:11px;font-weight:600;letter-spacing:.09em;cursor:pointer;min-height:53px}
 .reservation-submit:hover{background:#44331e}
 .reservation-submit:disabled{cursor:wait;opacity:.7}

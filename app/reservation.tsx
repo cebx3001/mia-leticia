@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import type { FormEvent } from 'react';
 
 const BASE = import.meta.env.BASE_URL;
 const EMAIL = 'info@mialeticia.com';
@@ -20,6 +21,7 @@ export default function Reservation() {
   const today = localDate(new Date());
   const [arrival, setArrival] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
   const languageQuery = en ? '?lang=en' : '';
   const next = new URL(`${BASE}reservar/gracias/${languageQuery}`, window.location.origin).href;
 
@@ -30,6 +32,45 @@ export default function Reservation() {
     window.addEventListener('pageshow', reset);
     return () => window.removeEventListener('pageshow', reset);
   }, [en, sent]);
+
+  async function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (submitting) return;
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    const departure = form.querySelector<HTMLInputElement>('#departure');
+    if (String(data.get('Salida')) <= String(data.get('Llegada'))) {
+      departure?.setCustomValidity(t('La salida debe ser posterior a la llegada.', 'Departure must be after arrival.'));
+      form.reportValidity();
+      return;
+    }
+    setError('');
+    setSubmitting(true);
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 20000);
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${EMAIL}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(Object.fromEntries(data)),
+        signal: controller.signal,
+      });
+      if (!response.ok) throw new Error('Submission unavailable');
+      const result = await response.json();
+      if (/activat|confirm.*email|verify.*email/i.test(String(result.message || ''))) {
+        setError(t('El envío por correo está pendiente de activación. Por favor, contáctanos directamente para solicitar tu estancia.', 'Email delivery is awaiting activation. Please contact us directly to request your stay.'));
+      } else if (result.success === true || result.success === 'true') {
+        window.location.assign(next);
+      } else {
+        throw new Error('Submission not accepted');
+      }
+    } catch {
+      setError(t('No pudimos confirmar el envío. Tus datos siguen aquí: puedes volver a intentarlo o contactarnos directamente.', 'We could not confirm your request was sent. Your details are still here: please try again or contact us directly.'));
+    } finally {
+      window.clearTimeout(timeout);
+      setSubmitting(false);
+    }
+  }
 
   return <div className="reservation-page">
     <a className="reservation-skip" href="#reservation-main">{t('Saltar al contenido', 'Skip to content')}</a>
@@ -63,10 +104,11 @@ export default function Reservation() {
           <h2 id="reservation-form-title">{t('Solicitar reserva', 'Request a reservation')}</h2>
           <p id="reservation-required">{t('Los campos con * son obligatorios.', 'Fields marked * are required.')}</p>
         </div>
-        <form action={`https://formsubmit.co/${EMAIL}`} method="POST" acceptCharset="UTF-8" aria-describedby="reservation-required reservation-use" onSubmit={() => setSubmitting(true)}>
+        <form action={`https://formsubmit.co/${EMAIL}`} method="POST" acceptCharset="UTF-8" aria-describedby="reservation-required reservation-use" aria-busy={submitting} onSubmit={submit}>
           <input type="hidden" name="_subject" value="Solicitud de reserva — Mía Leticia"/>
           <input type="hidden" name="_template" value="table"/>
           <input type="hidden" name="_next" value={next}/>
+          <input type="hidden" name="_url" value={new URL(`${BASE}reservar/`, window.location.origin).href}/>
           <input type="hidden" name="Idioma" value={en ? 'English' : 'Español'}/>
           <div className="reservation-honeypot" aria-hidden="true">
             <label htmlFor="website">{t('Deja este campo vacío', 'Leave this field empty')}</label>
@@ -84,8 +126,8 @@ export default function Reservation() {
           <fieldset>
             <legend>{t('02 / Tu estancia', '02 / Your stay')}</legend>
             <div className="reservation-fields">
-              <label htmlFor="arrival">{t('Fecha de llegada', 'Arrival date')} *<input id="arrival" name="Llegada" type="date" min={today} required value={arrival} onChange={event => setArrival(event.target.value)}/></label>
-              <label htmlFor="departure">{t('Fecha de salida', 'Departure date')} *<input id="departure" name="Salida" type="date" min={followingDay(arrival && arrival >= today ? arrival : today)} required/></label>
+              <label htmlFor="arrival">{t('Fecha de llegada', 'Arrival date')} *<input id="arrival" name="Llegada" type="date" min={today} required value={arrival} onChange={event => setArrival(event.target.value)} onInput={event => setArrival(event.currentTarget.value)}/></label>
+              <label htmlFor="departure">{t('Fecha de salida', 'Departure date')} *<input id="departure" name="Salida" type="date" min={followingDay(arrival && arrival >= today ? arrival : today)} required onInput={event => event.currentTarget.setCustomValidity('')}/></label>
               <label className="reservation-wide" htmlFor="room">{t('Tipo de habitación', 'Room type')} *<select id="room" name="Habitación" required defaultValue="">
                 <option value="" disabled>{t('Selecciona una habitación', 'Choose a room')}</option>
                 <option value="Simple">{t('Simple', 'Single')}</option>
@@ -99,7 +141,8 @@ export default function Reservation() {
             </div>
           </fieldset>
           <p id="reservation-use" className="reservation-use">{t('Usaremos estos datos para atender tu solicitud y contactarte sobre tu estancia.', 'We will use these details to respond to your request and contact you about your stay.')}</p>
-          <button className="reservation-submit" type="submit" disabled={submitting}>{submitting ? t('CONTINUANDO…', 'CONTINUING…') : t('ENVIAR SOLICITUD', 'SEND REQUEST')} <span aria-hidden="true">↗</span></button>
+          {error && <div className="reservation-error" role="alert"><p>{error}</p><a href={`mailto:${EMAIL}`}>{EMAIL}</a><a href="tel:+593982023389">{PHONE}</a></div>}
+          <button className="reservation-submit" type="submit" disabled={submitting}>{submitting ? t('ENVIANDO…', 'SENDING…') : t('ENVIAR SOLICITUD', 'SEND REQUEST')} <span aria-hidden="true">↗</span></button>
         </form>
       </section>}
     </main>
