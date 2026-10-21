@@ -3,7 +3,7 @@ import {useEffect,useRef,useState} from 'react';
 const R=[
 ['Simple','Single','images/rooms/simple-desktop.webp','images/rooms/simple-mobile.webp'],
 ['Doble','Double','images/rooms/double-desktop.webp','images/rooms/double-mobile.webp'],
-['Triple','Triple','images/rooms/triple-mobile.webp','images/rooms/triple-mobile.webp'],
+['Triple','Triple','images/rooms/triple-desktop.webp','images/rooms/triple-mobile.webp'],
 ['Familiar','Family','images/rooms/family-desktop.webp','images/rooms/family-mobile.webp']] as const;
 const S={arrival:'images/social/arrival.webp',breakfast:'images/social/breakfast.webp',games:'images/social/games.webp',family:'images/social/family.webp',morning:'images/social/morning.webp',guests:'images/social/guests.webp',ret:'images/social/return.webp'};
 const Q=[
