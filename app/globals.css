@@ -207,4 +207,5 @@ img{display:block}
 .ml-room-image>picture:first-child img{filter:saturate(.72) contrast(1.04) brightness(.67)}
 .ml-room-image>picture.ml-room-reveal{filter:saturate(.98) contrast(1.02) brightness(.98);-webkit-mask-image:radial-gradient(circle 220px at var(--px) var(--py),#000 0 34%,rgba(0,0,0,.9) 48%,transparent 72%);mask-image:radial-gradient(circle 220px at var(--px) var(--py),#000 0 34%,rgba(0,0,0,.9) 48%,transparent 72%)}
 @media(max-width:767px){.ml-room-image picture img{inset:0;width:100%;height:100%;object-position:center center;transform:scale(calc(1.01 + var(--p)*.018))}.ml-room-image>picture.ml-room-reveal{-webkit-mask-image:none;mask-image:none;opacity:0}}
-\n@media(max-width:767px){.hero>.hero-photo img{object-position:center center}.ml-patio-stage>.ml-patio-photo{inset:0;width:100%;height:100%}.ml-patio-stage>.ml-patio-photo img{transform:scale(calc(1.01 + var(--p)*.018));object-position:center center}}\n
+
+@media(max-width:767px){.hero>.hero-photo img{object-position:center center}.ml-patio-stage>.ml-patio-photo{inset:0;width:100%;height:100%}.ml-patio-stage>.ml-patio-photo img{transform:scale(calc(1.01 + var(--p)*.018));object-position:center center}}\n
