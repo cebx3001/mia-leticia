@@ -30,7 +30,7 @@ img{display:block}
 
 /* Approved opening language, now narratively corrected to the facade. */
 .hero{height:125vh;position:relative;overflow:hidden;background:#111}
-.hero>img{position:fixed;z-index:0;inset:0;width:100%;height:100vh;object-fit:cover;object-position:center;transform:scale(calc(1.045 + var(--progress)*.055));filter:saturate(.92) contrast(1.03);will-change:transform}
+.hero>img{position:fixed;z-index:0;inset:0;width:100%;height:100vh;object-fit:cover;object-position:center;transform:scale(calc(1.045 + var(--progress)*.055));filter:saturate(.92) contrast(1.03);will-change:transform}\n.hero>.hero-photo{position:fixed;z-index:0;inset:0;width:100%;height:100vh;display:block}.hero>.hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transform:scale(calc(1.045 + var(--progress)*.055));filter:saturate(.92) contrast(1.03);will-change:transform}
 .hero .shade{z-index:1}
 .hero .folio{position:absolute;z-index:3;top:19vh;left:3vw}
 .hero h1{position:absolute;z-index:3;top:25vh;left:3vw;margin:0;display:flex;flex-direction:column;font:400 clamp(70px,10.8vw,178px)/.73 Georgia,'Times New Roman',serif;letter-spacing:-.065em;text-shadow:0 3px 24px #120d0875}
@@ -66,7 +66,7 @@ img{display:block}
 
 /* 02 — patio: a deliberate pause. */
 .ml-patio{height:230vh;background:#17140f}
-.ml-patio-stage>img{position:absolute;inset:-3%;width:106%;height:106%;object-fit:cover;transform:scale(calc(1.06 - var(--p)*.035));filter:saturate(.91) contrast(1.02) brightness(.91);will-change:transform}
+.ml-patio-stage>img{position:absolute;inset:-3%;width:106%;height:106%;object-fit:cover;transform:scale(calc(1.06 - var(--p)*.035));filter:saturate(.91) contrast(1.02) brightness(.91);will-change:transform}\n.ml-patio-stage>.ml-patio-photo{position:absolute;inset:-3%;width:106%;height:106%;display:block}.ml-patio-stage>.ml-patio-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(calc(1.06 - var(--p)*.035));filter:saturate(.91) contrast(1.02) brightness(.91);will-change:transform}
 .ml-patio-stage:after{content:'';position:absolute;z-index:3;inset:0;background:linear-gradient(90deg,#100d0875 0%,transparent 58%,#100d0829),linear-gradient(180deg,transparent 52%,#0b090672)}
 .ml-cursor-light{position:absolute;z-index:4;inset:0;background:radial-gradient(circle 220px at var(--px) var(--py),rgba(255,223,160,.16),rgba(255,218,148,.055) 34%,transparent 72%);mix-blend-mode:screen;pointer-events:none;transition:opacity .3s}
 .ml-patio .ml-kicker{z-index:7}
@@ -207,3 +207,4 @@ img{display:block}
 .ml-room-image>picture:first-child img{filter:saturate(.72) contrast(1.04) brightness(.67)}
 .ml-room-image>picture.ml-room-reveal{filter:saturate(.98) contrast(1.02) brightness(.98);-webkit-mask-image:radial-gradient(circle 220px at var(--px) var(--py),#000 0 34%,rgba(0,0,0,.9) 48%,transparent 72%);mask-image:radial-gradient(circle 220px at var(--px) var(--py),#000 0 34%,rgba(0,0,0,.9) 48%,transparent 72%)}
 @media(max-width:767px){.ml-room-image picture img{inset:0;width:100%;height:100%;object-position:center center;transform:scale(calc(1.01 + var(--p)*.018))}.ml-room-image>picture.ml-room-reveal{-webkit-mask-image:none;mask-image:none;opacity:0}}
+\n@media(max-width:767px){.hero>.hero-photo img{object-position:center center}.ml-patio-stage>.ml-patio-photo{inset:0;width:100%;height:100%}.ml-patio-stage>.ml-patio-photo img{transform:scale(calc(1.01 + var(--p)*.018));object-position:center center}}\n
